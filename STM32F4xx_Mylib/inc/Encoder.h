@@ -33,16 +33,16 @@
 #define ENCRB_SOURCE            GPIO_PinSource1
 
 // Lifting Motor Channels
-#define ENCLIFT_TIM             TIM2
-#define ENCLIFT_AF              GPIO_AF_TIM2
+#define ENCLIFT_TIM             TIM8
+#define ENCLIFT_AF              GPIO_AF_TIM8
 
-#define ENCLIFTA_GPIO_PORT      GPIOA
-#define ENCLIFTA_PIN            GPIO_Pin_15
-#define ENCLIFTA_SOURCE         GPIO_PinSource15
+#define ENCLIFTA_GPIO_PORT      GPIOC
+#define ENCLIFTA_PIN            GPIO_Pin_6
+#define ENCLIFTA_SOURCE         GPIO_PinSource6
 
-#define ENCLIFTB_GPIO_PORT      GPIOB
-#define ENCLIFTB_PIN            GPIO_Pin_3
-#define ENCLIFTB_SOURCE         GPIO_PinSource3
+#define ENCLIFTB_GPIO_PORT      GPIOC
+#define ENCLIFTB_PIN            GPIO_Pin_7
+#define ENCLIFTB_SOURCE         GPIO_PinSource7
 
 
 

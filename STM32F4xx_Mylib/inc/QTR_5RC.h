@@ -16,6 +16,6 @@ void QTRSensorsRead(uint16_t *sensorValues);
 void QTRSensorsCalibrate(void);
 void QTRSensorsReadCalibrated(uint16_t *_sensorValues);
 uint16_t QTRSensorsReadLine(uint16_t *_sensorValues);
-void TIM_INT_Init(void);
+void TIM7_INT_Init(void);
 
 #endif /* QTR_5RC_H_ */

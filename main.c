@@ -7,11 +7,7 @@
 #include "tm_stm32f4_adc.h"
 #include "tm_stm32f4_mfrc522.h"
 #include "FuzzyLogic.h"
-//#include "PID.h"
-void Delay(int t);
-void delay_us(uint16_t period);
-void funcIntInit();
-	void funcTimerInit();
+#include "Interrupt_Timer.h"
 uint8_t g;
 uint16_t flag_10ms = 0;
 uint16_t flag_100ms = 0,a=0;
@@ -28,6 +24,8 @@ extern uint16_t sensorValues[5];
 float v_left = 0, v_left_filter =0;
 float	v_right=0,v_right_filter =0;
 float v_ref = 15, v_measure =0;;
+
+float v_lift = 0;
 
 uint16_t line_position=0;
 float f_line_position =0 ,line_ref =1000.0;
@@ -62,20 +60,17 @@ int main(void)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
+
   // Config PWM
 		
 		//PWM_Init();
 		//ENC_Init();
 		//PID_Init();
 		//BKPSRAM_Init();
-		TIM_INT_Init();// QTR_5RC Init
+		TIM7_INT_Init();// QTR_5RC Init
 		UART_Init();
-		funcIntInit();
-		funcTimerInit();
+		TIM6_INT_Init();
+		TIM2_INT_Init();
 		//TM_MFRC522_Init();
 	/* Initialize ADC1 */
 	//TM_ADC_InitADC(ADC1);
@@ -117,7 +112,7 @@ int main(void)
 					//v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
 					
 					//v_measure = (v_left_filter+v_right_filter)/2;
-				
+				v_lift = ENC_Velocity(TIM8,374);
 					// QTRSensorsCalibrate();
 					//line_position = QTRSensorsReadLine(sensorValues);
 				//f_line_position = (float)(line_position);
@@ -161,56 +156,33 @@ int main(void)
 				//UART_PrintNumber("%.2f",9.5);
 				//UART_PrintNumber("%.2f",11.5);
 				//UART_Print("AAAAAA");
-				UART_PrintNumber("%.2f",2.5);
-				c=c+10;;
+				UART_PrintNumber("%.2f",v_lift);
+				//c=c+10;;
 				//delay_01ms(200);
 				flag_100ms = 0;
 			}
   }
 }
-void Delay(int t){
-	int i;
-	for (i=0; i<t; i++);
-}
-
-
-
-
-void funcIntInit()
-{
-	// Initialize the interrupt
-	__NVIC_EnableIRQ(TIM6_DAC_IRQn);
- 
-	EXTI->IMR |= (1<<0);
-	EXTI->EMR |= (1<<0);
-	EXTI->FTSR &= ~(1<<0);
-	EXTI->RTSR |= (1<<0);
- 
-	// SysCfg not needed for basic timer TIM6???
-}
- 
-void funcTimerInit()
-{
-	// Peripheral clock
-	RCC->APB1ENR |= (1<<4);	// Enables APB1 bus to use Timer 6
-	// 2. Init timer
-	TIM6->CR1 |= (1<<0);	// CEN: Enables counter
-	TIM6->CR1 &= ~(1<<1);	// UDIS: Update event enabled
-	TIM6->CR1 |= (1<<2);	// URS: Update request source enabled for overflow/underflow only
-	TIM6->CR1 &= ~(1<<3);	// OPM: One Pulse Mode. Counter continues counting.
-	TIM6->CR1 &= ~(1<<7);	// Auto reload preload enabled
-	TIM6->DIER |= (1<<0);	// UIE: Update interrupt enabled
-	TIM6->EGR |= (1<<0);	// UG: Update generation. Re-initializes the counter and updates registers
-	//TIM6->CNT = 0x00FA;		// Counter goes up to 250 to have 1s timer ???
-	TIM6->PSC = 0xFA00;		// Sets prescaler to 64000. Timer clock is now 16MHz/64000=250Hz
-	TIM6->ARR = 0x00FA;		// Counter goes up to 250 to have 1s timer
- 
- 
-}
 
 void TIM6_DAC_IRQHandler()	// Overrides the weak implementation of the IRQ in the startup file
 {
-	// Toggle LED
-	//UART_PrintNumber("%.2f",2.5);
+	TIM6->SR = ~TIM_SR_UIF;
+	// Begin interrupt Timer6 40ms code
+	//UART_PrintNumber("%.2f",c);
+	//c++;
 	__NVIC_ClearPendingIRQ(TIM6_DAC_IRQn);
 }
+
+void TIM2_IRQHandler()
+{
+    // Checks whether the TIM2 interrupt has occurred or not
+    if (TIM_GetITStatus(TIM2, TIM_IT_Update))
+    {
+        // Begin interrupt Timer3 10ms code
+      c++;
+				//UART_PrintNumber("%.2f",3.5);
+        // Clears the TIM2 interrupt pending bit
+        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+    }
+}
+

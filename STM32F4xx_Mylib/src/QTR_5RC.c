@@ -17,7 +17,7 @@ uint16_t minCalibValues[sensorCount]; // Lowest readings seen during calibration
 uint16_t maxCalibValues[sensorCount]; // Highest readings seen during calibration
 uint16_t position;
 
-void TIM_INT_Init(void)
+void TIM7_INT_Init(void)
 {
     // Enable clock for TIM2
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
