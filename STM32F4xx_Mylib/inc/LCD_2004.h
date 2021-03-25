@@ -6,7 +6,10 @@
 #include <stdint.h>
 
 #define I2C_LCD_ADDR 0x4E
-#define I2C_LCD_Delay_Ms(u16DelayMs) delay_ms(u16DelayMs)
+
+extern void delay_ms(uint32_t u32DelayInMs);
+
+#define LCD_Delay_Ms(u16DelayMs) delay_ms(u16DelayMs)
 
 #define LCD_EN 2
 #define LCD_RW 1
@@ -17,10 +20,10 @@
 #define LCD_D7 7
 #define LCD_BL 3
 
-void I2C_LCD_Init(void);
-void I2C_LCD_Puts(char *szStr);
-void I2C_LCD_Clear(void);
-void I2C_LCD_NewLine(void);
-void I2C_LCD_BackLight(uint8_t u8BackLight);
+void LCD_Init(void);
+void LCD_Puts(char *szStr);
+void LCD_Clear(void);
+void LCD_NewLine(void);
+void LCD_BackLight(uint8_t u8BackLight);
 
 #endif

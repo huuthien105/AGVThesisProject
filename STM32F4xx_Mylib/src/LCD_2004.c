@@ -1,5 +1,5 @@
-#include "i2c.h"
-#include "i2c_lcd.h"
+#include "I2C.h"
+#include "LCD_2004.h"
 
 static uint8_t u8LCD_Buff[8];//bo nho dem luu lai toan bo
 static uint8_t u8LcdTmp;
@@ -10,11 +10,11 @@ static uint8_t u8LcdTmp;
 #define	CURSOR_ON		0x0E
 #define	CURSOR_HOME		0x80
 
-static void I2C_LCD_Write_4bit(uint8_t u8Data);
-static void I2C_LCD_FlushVal(void);
-static void I2C_LCD_WriteCmd(uint8_t u8Cmd);
+static void LCD_Write_4bit(uint8_t u8Data);
+static void LCD_FlushVal(void);
+static void LCD_WriteCmd(uint8_t u8Cmd);
 
-void I2C_LCD_FlushVal(void)
+void LCD_FlushVal(void)
 {
 	uint8_t i;
 	
@@ -27,45 +27,52 @@ void I2C_LCD_FlushVal(void)
 	I2C_Write(I2C_LCD_ADDR, &u8LcdTmp, 1);
 }
 
-void I2C_LCD_Init(void)
+void LCD_Init(void)
 {
+	TIM_TimeBaseInitTypeDef timInit;
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM12, ENABLE);
+	timInit.TIM_Prescaler = 84 - 1;
+	timInit.TIM_Period = 0xFFFF;
+	TIM_TimeBaseInit(TIM12, &timInit);
+	TIM_Cmd(TIM12, ENABLE);
+	
 	uint8_t i;
 	
-	I2C_LCD_Delay_Ms(50);
+	LCD_Delay_Ms(50);
 	
-	i2c_init();
+	My_I2C_Init();
 	
 	for (i = 0; i < 8; ++i) {
 		u8LCD_Buff[i] = 0;
 	}
 	
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	u8LCD_Buff[LCD_RS] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	u8LCD_Buff[LCD_RW] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
-	I2C_LCD_Write_4bit(0x03);
-	I2C_LCD_Delay_Ms(5);
+	LCD_Write_4bit(0x03);
+	LCD_Delay_Ms(5);
 	
-	I2C_LCD_Write_4bit(0x03);
-	I2C_LCD_Delay_Ms(1);
+	LCD_Write_4bit(0x03);
+	LCD_Delay_Ms(1);
 	
-	I2C_LCD_Write_4bit(0x03);
-	I2C_LCD_Delay_Ms(1);
+	LCD_Write_4bit(0x03);
+	LCD_Delay_Ms(1);
 	
-	I2C_LCD_Write_4bit(MODE_4_BIT >> 4);
-	I2C_LCD_Delay_Ms(1);
+	LCD_Write_4bit(MODE_4_BIT >> 4);
+	LCD_Delay_Ms(1);
 	
-	I2C_LCD_WriteCmd(MODE_4_BIT);
-	I2C_LCD_WriteCmd(DISP_ON);
-	I2C_LCD_WriteCmd(CURSOR_ON);
-	I2C_LCD_WriteCmd(CLR_SCR);
+	LCD_WriteCmd(MODE_4_BIT);
+	LCD_WriteCmd(DISP_ON);
+	LCD_WriteCmd(CURSOR_ON);
+	LCD_WriteCmd(CLR_SCR);
 }
 
-void I2C_LCD_Write_4bit(uint8_t u8Data)
+void LCD_Write_4bit(uint8_t u8Data)
 {
 	//4 bit can ghi chinh la 4 5 6 7
 	//dau tien gan LCD_E=1
@@ -94,10 +101,10 @@ void I2C_LCD_Write_4bit(uint8_t u8Data)
 	}
 	
 	u8LCD_Buff[LCD_EN] = 1;
-	I2C_LCD_FlushVal();	
+	LCD_FlushVal();	
 	
 	u8LCD_Buff[LCD_EN] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 }
 
@@ -110,41 +117,41 @@ void LCD_WaitBusy(void)
 	u8LCD_Buff[LCD_D5] = 1;
 	u8LCD_Buff[LCD_D6] = 1;
 	u8LCD_Buff[LCD_D7] = 1;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	u8LCD_Buff[LCD_RS] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	u8LCD_Buff[LCD_RW] = 1;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	do {
 		u8LCD_Buff[LCD_EN] = 1;
-		I2C_LCD_FlushVal();
+		LCD_FlushVal();
 		I2C_Read(I2C_LCD_ADDR + 1, &temp, 1);
 		
 		u8LCD_Buff[LCD_EN] = 0;
-		I2C_LCD_FlushVal();
+		LCD_FlushVal();
 		u8LCD_Buff[LCD_EN] = 1;
-		I2C_LCD_FlushVal();
+		LCD_FlushVal();
 		u8LCD_Buff[LCD_EN] = 0;
-		I2C_LCD_FlushVal();
+		LCD_FlushVal();
 	} while (temp & 0x08);
 }
 
-void I2C_LCD_WriteCmd(uint8_t u8Cmd)
+void LCD_WriteCmd(uint8_t u8Cmd)
 {
 	
 	LCD_WaitBusy();
 
 	u8LCD_Buff[LCD_RS] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
 	u8LCD_Buff[LCD_RW] = 0;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	
-	I2C_LCD_Write_4bit(u8Cmd >> 4);
-	I2C_LCD_Write_4bit(u8Cmd);
+	LCD_Write_4bit(u8Cmd >> 4);
+	LCD_Write_4bit(u8Cmd);
 }
 
 void LCD_Write_Chr(char chr)
@@ -152,15 +159,15 @@ void LCD_Write_Chr(char chr)
 	
 	LCD_WaitBusy();
 	u8LCD_Buff[LCD_RS] = 1;
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 	u8LCD_Buff[LCD_RW] = 0;
-	I2C_LCD_FlushVal();
-	I2C_LCD_Write_4bit(chr >> 4);
-	I2C_LCD_Write_4bit(chr);
+	LCD_FlushVal();
+	LCD_Write_4bit(chr >> 4);
+	LCD_Write_4bit(chr);
 	
 }
 
-void I2C_LCD_Puts(char *sz)
+void LCD_Puts(char *sz)
 {
 	
 	while (1) {
@@ -172,19 +179,19 @@ void I2C_LCD_Puts(char *sz)
 	}
 }
 
-void I2C_LCD_Clear(void)
+void LCD_Clear(void)
 {
 	
-	I2C_LCD_WriteCmd(CLR_SCR);
+	LCD_WriteCmd(CLR_SCR);
 }
 
-void I2C_LCD_NewLine(void)
+void LCD_NewLine(void)
 {
 	
-	I2C_LCD_WriteCmd(0xc0);
+	LCD_WriteCmd(0xc0);
 }
 
-void I2C_LCD_BackLight(uint8_t u8BackLight)
+void LCD_BackLight(uint8_t u8BackLight)
 {
 	
 	if(u8BackLight) {
@@ -192,5 +199,5 @@ void I2C_LCD_BackLight(uint8_t u8BackLight)
 	} else {
 		u8LCD_Buff[LCD_BL] = 0;
 	}
-	I2C_LCD_FlushVal();
+	LCD_FlushVal();
 }

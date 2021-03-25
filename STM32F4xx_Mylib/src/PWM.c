@@ -4,6 +4,7 @@
 
 void PWM_Init(void)
 	{
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
 		PWM_Pin();
 		PWM_configOUT(TIM3,20000.0);
 	}
@@ -90,7 +91,7 @@ void Run_Motor(uint8_t motor,float duty)
 			TIM_SetCompare2(TIM3,duty);
 			GPIO_WriteBit(PWM_GPIO_PORT,DIRR_PIN,dir);
 		}
-	else if (motor == RIGHT_MOTOR )
+	else if (motor == LIFT_MOTOR )
 		{
 			TIM_SetCompare3(TIM3,duty);
 			GPIO_WriteBit(PWM_GPIO_PORT,DIRLIFT_PIN,dir);

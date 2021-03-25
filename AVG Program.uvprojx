@@ -503,16 +503,6 @@
               <FilePath>.\STM32F4xx_Mylib\src\QTR_5RC.c</FilePath>
             </File>
             <File>
-              <FileName>tm_stm32f4_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>tm_stm32f4_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_gpio.c</FilePath>
-            </File>
-            <File>
               <FileName>tm_stm32f4_mfrc522.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_mfrc522.c</FilePath>
@@ -523,19 +513,34 @@
               <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_spi.c</FilePath>
             </File>
             <File>
-              <FileName>i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>i2c_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\i2c_lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>FuzzyLogic.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\STM32F4xx_Mylib\src\FuzzyLogic.c</FilePath>
+            </File>
+            <File>
+              <FileName>Interrupt_Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\Interrupt_Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_2004.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\LCD_2004.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_Voltage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\ADC_Voltage.c</FilePath>
             </File>
           </Files>
         </Group>

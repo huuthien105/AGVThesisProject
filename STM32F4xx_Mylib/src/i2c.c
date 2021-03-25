@@ -1,76 +1,5 @@
-#include "i2c.h"
-#define SDA_0 GPIO_ResetBits(GPIOB, GPIO_Pin_10)
-#define SDA_1 GPIO_SetBits(GPIOB, GPIO_Pin_10)
-#define SCL_0 GPIO_ResetBits(GPIOB, GPIO_Pin_11)
-#define SCL_1 GPIO_SetBits(GPIOB, GPIO_Pin_11)
-#define SDA_VAL (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10))
-
-uint8_t I2C_Write(uint8_t Address, uint8_t *pData, uint8_t length)
-{
-	uint8_t i;
-	
-	i2c_start();
-	if (i2c_write(Address) == 0) {
-		i2c_stop();
-		return 0;
-	}
-	for (i = 0; i < length; ++i) {
-		if (i2c_write(pData[i]) == 0) {
-			i2c_stop();
-			return 0;
-		}
-	}
-	i2c_stop();
-	
-	return 1;
-}
-
-uint8_t I2C_Read(uint8_t Address, uint8_t *pData, uint8_t length)
-{
-	uint8_t i;
-	
-	i2c_start();
-	
-	if (i2c_write(Address) == 0) {
-		i2c_stop();
-		return 0;
-	}
-	
-	for (i = 0; i < length - 1; ++i) {
-		pData[i] = i2c_read(1);
-	}
-	pData[i] = i2c_read(0);
-	
-	i2c_stop();
-	
-	return 1;
-}
-
-
-
-void delay_us(uint32_t delay)
-{
-	
-	TIM_SetCounter(TIM6, 0);
-	while (TIM_GetCounter(TIM6) < delay) {
-	}
-}
-
-void delay_ms(uint32_t u32DelayInMs)
-{
-	
-	while (u32DelayInMs) {
-		/*
-		TIM6->CNT = 0;
-		while (TIM6->CNT < 1000) {
-		}
-		*/
-		TIM_SetCounter(TIM6, 0);
-		while (TIM_GetCounter(TIM6) < 1000) {
-		}
-		--u32DelayInMs;
-	}
-}
+#include <stm32f4xx.h>
+#include "I2C.h"
 void i2c_init(void)
 {
 	GPIO_InitTypeDef gpioInit;
@@ -79,7 +8,7 @@ void i2c_init(void)
 	
 	gpioInit.GPIO_Mode = GPIO_Mode_OUT;
 	gpioInit.GPIO_OType = GPIO_OType_OD;
-	gpioInit.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+	gpioInit.GPIO_Pin = GPIO_Pin_10| GPIO_Pin_11;
 	gpioInit.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	gpioInit.GPIO_Speed = GPIO_High_Speed;
 	
@@ -181,4 +110,78 @@ uint8_t i2c_read(uint8_t u8Ack)
 	delay_us(5);
 	
 	return u8Ret;
+}
+
+
+void My_I2C_Init(void)
+{
+	i2c_init();
+	
+	
+}
+
+uint8_t I2C_Write(uint8_t Address, uint8_t *pData, uint8_t length)
+{
+	uint8_t i;
+	
+	i2c_start();
+	if (i2c_write(Address) == 0) {
+		i2c_stop();
+		return 0;
+	}
+	for (i = 0; i < length; ++i) {
+		if (i2c_write(pData[i]) == 0) {
+			i2c_stop();
+			return 0;
+		}
+	}
+	i2c_stop();
+	
+	return 1;
+}
+
+uint8_t I2C_Read(uint8_t Address, uint8_t *pData, uint8_t length)
+{
+	uint8_t i;
+	
+	i2c_start();
+	
+	if (i2c_write(Address) == 0) {
+		i2c_stop();
+		return 0;
+	}
+	
+	for (i = 0; i < length - 1; ++i) {
+		pData[i] = i2c_read(1);
+	}
+	pData[i] = i2c_read(0);
+	
+	i2c_stop();
+	
+	return 1;
+}
+
+
+void delay_us(uint32_t delay)
+{
+	
+	TIM_SetCounter(TIM12, 0);
+	while (TIM_GetCounter(TIM12) < delay) {
+	}
+}
+
+void delay_ms(uint32_t u32DelayInMs)
+{
+	
+	while (u32DelayInMs) {
+		/*
+		TIM6->CNT = 0;
+		while (TIM6->CNT < 1000) {
+		}
+		*/
+		TIM_SetCounter(TIM12, 0);
+		while (TIM_GetCounter(TIM12) < 1000) {
+		}
+		--u32DelayInMs;
+	}
 }

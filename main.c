@@ -1,16 +1,12 @@
-#include "PWM.h"
-#include "UART.h"
-#include "Encoder.h"
-#include "PID.h"
-#include "Bkpsram.h"
-#include "QTR_5RC.h"
-#include "tm_stm32f4_adc.h"
-#include "tm_stm32f4_mfrc522.h"
-#include "FuzzyLogic.h"
-#include "Interrupt_Timer.h"
+#include "main.h"
+#include "string.h"
+#include "ADC_Voltage.h"
 uint8_t g;
 uint16_t flag_10ms = 0;
 uint16_t flag_100ms = 0,a=0;
+
+uint8_t testcb;
+uint8_t adc;
 
 float duty = 50;
 uint8_t dir;
@@ -59,22 +55,28 @@ int main(void)
   /* GPIOD Peripheral clock enable */
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
   // Config PWM
-		
-		//PWM_Init();
-		//ENC_Init();
+	
+		PWM_Init();
+		ENC_Init();
 		//PID_Init();
 		//BKPSRAM_Init();
-		TIM7_INT_Init();// QTR_5RC Init
+		//TIM7_INT_Init();// QTR_5RC Init
 		UART_Init();
-		TIM6_INT_Init();
-		TIM2_INT_Init();
-		//TM_MFRC522_Init();
+		//TIM6_INT_Init();
+		//TIM2_INT_Init();
+		TM_MFRC522_Init();
 	/* Initialize ADC1 */
 	//TM_ADC_InitADC(ADC1);
-	
+	LCD_Init();
+	LCD_Clear();
+	LCD_BackLight(1);
+	LCD_Puts("STM32F407VGT6");
+	LCD_NewLine();
+	LCD_Puts("I2C: PA1 - PA2");
 	/* Enable vbat channel */
 	//TM_ADC_EnableVbat();
 // cconffig encoder
@@ -84,8 +86,18 @@ int main(void)
 	//g = sizeof(x_measure);
 	//Run_Motor(LEFT_MOTOR,FOWARD,50.0);
 	//PID_Init();
-	
+	//GPIO_WriteBit(PWM_GPIO_PORT,GPIO_Pin_7,1);	
 	//for(int i = 0; i < 300; i++) QTRSensorsCalibrate();
+	GPIO_InitTypeDef TestCB;
+	TestCB.GPIO_Mode = GPIO_Mode_IN ;
+	TestCB.GPIO_OType = GPIO_OType_OD;
+	TestCB.GPIO_Pin = GPIO_Pin_14;
+	TestCB.GPIO_PuPd =   GPIO_PuPd_DOWN  ;
+	TestCB.GPIO_Speed = GPIO_Fast_Speed  ;
+	GPIO_Init(GPIOD, &TestCB);
+	
+	ADC_Config();
+
   while (1)
   {	
 				
@@ -105,14 +117,16 @@ int main(void)
 			}
    if(flag_10ms == 10)
 			{
-					//v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
+					v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
 					//v_left_filter = LowpassFilter(v_left,LEFT_MOTOR);
 					
-				//	v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
+				 v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
+				 v_lift = ENC_Velocity(TIM8,374);
 					//v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
-					
+					testcb = GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_14);
+				adc = Read_ADC();
 					//v_measure = (v_left_filter+v_right_filter)/2;
-				v_lift = ENC_Velocity(TIM8,374);
+				//v_lift = ENC_Velocity(TIM8,374);
 					// QTRSensorsCalibrate();
 					//line_position = QTRSensorsReadLine(sensorValues);
 				//f_line_position = (float)(line_position);
@@ -132,33 +146,37 @@ int main(void)
 				//u_=giaim_trongtam(e_,edot_);
 				//u = sat_100(10*u_);
 				//pre_error = error;
-				//Run_Motor(LEFT_MOTOR,udk );
-				//Run_Motor(RIGHT_MOTOR,udk );
+				Run_Motor(LEFT_MOTOR,30);
+				Run_Motor(RIGHT_MOTOR,50);
+				Run_Motor(LIFT_MOTOR,50);
 				flag_10ms = 0;
 				
 			}
 		if(flag_100ms == 1000) // Truyen nhan UART
 			{
 				//UART_PrintNumber("%f.2",TIM_GetCounter(TIM4));
-				//send_frame.Header = 0xFFAA;
-				//send_frame.FunctionCode = 0xA0;
-				//send_frame.AGVID = 1;
-				//send_frame.Velocity= c;
-				//send_frame.Udk= 75.23;
-				//send_frame.Line_Position = 1125.0;
-				//send_frame.delta_Udk = 30.15;
+				send_frame.Header = 0xFFAA;
+				send_frame.FunctionCode = 0xA0;
+				send_frame.AGVID = 1;
+				send_frame.Velocity= 15.2;
+				send_frame.Udk= 75.23;
+				send_frame.Line_Position = 1125.0;
+				send_frame.delta_Udk = 30.15;
 				//USART_SendData(USART2, x[1]);
 				//delay_01ms(1);
 				//USART_SendData(USART2, x[2]);
-					//UART_SendData((uint8_t *) &send_frame ,sizeof(send_frame) ) ;
+				UART_SendData((uint8_t *) &send_frame ,sizeof(send_frame) ) ;
 				//UART_PrintNumber("%.2f",2.5);
 				//UART_PrintNumber("%.2f",7.5);
 				//UART_PrintNumber("%.2f",9.5);
 				//UART_PrintNumber("%.2f",11.5);
 				//UART_Print("AAAAAA");
-				UART_PrintNumber("%.2f",v_lift);
+				//UART_PrintNumber("%.2f",v_lift);
 				//c=c+10;;
 				//delay_01ms(200);
+				LCD_Clear();
+				//char s[] = "Ab";
+				LCD_Puts("abcd");
 				flag_100ms = 0;
 			}
   }

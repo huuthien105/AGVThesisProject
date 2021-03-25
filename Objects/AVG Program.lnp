@@ -21,13 +21,14 @@
 ".\objects\pid.o"
 ".\objects\bkpsram.o"
 ".\objects\qtr_5rc.o"
-".\objects\tm_stm32f4_adc.o"
-".\objects\tm_stm32f4_gpio.o"
 ".\objects\tm_stm32f4_mfrc522.o"
 ".\objects\tm_stm32f4_spi.o"
-".\objects\i2c.o"
-".\objects\i2c_lcd.o"
 ".\objects\fuzzylogic.o"
+".\objects\interrupt_timer.o"
+".\objects\i2c.o"
+".\objects\lcd_2004.o"
+".\objects\tm_stm32f4_gpio.o"
+".\objects\adc_voltage.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\AVG Program.map" -o ".\Objects\AVG Program.axf"

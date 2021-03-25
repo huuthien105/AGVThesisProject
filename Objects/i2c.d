@@ -1,5 +1,4 @@
-.\objects\i2c.o: STM32F4xx_Mylib\src\i2c.c
-.\objects\i2c.o: .\STM32F4xx_Mylib\inc\i2c.h
+.\objects\i2c.o: STM32F4xx_Mylib\src\I2C.c
 .\objects\i2c.o: D:\AGVThesisProject\stm32f4xx.h
 .\objects\i2c.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h
 .\objects\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -36,3 +35,4 @@
 .\objects\i2c.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h
 .\objects\i2c.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\i2c.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
+.\objects\i2c.o: .\STM32F4xx_Mylib\inc\I2C.h

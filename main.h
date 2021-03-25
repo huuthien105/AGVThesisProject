@@ -33,8 +33,17 @@
 #include "stm32f4xx.h"
 #include "math.h"
 #include "PWM.h"
-#include "Encoder.h"
 #include "UART.h"
+#include "Encoder.h"
+#include "PID.h"
+#include "Bkpsram.h"
+#include "QTR_5RC.h"
+#include "tm_stm32f4_adc.h"
+#include "tm_stm32f4_mfrc522.h"
+#include "FuzzyLogic.h"
+#include "Interrupt_Timer.h"
+#include "i2c.h"
+#include "LCD_2004.h"
 
 #if defined (USE_STM324xG_EVAL)
   #include "stm324xg_eval.h"
@@ -74,5 +83,6 @@
 /* Exported functions ------------------------------------------------------- */
 
 #endif /* __MAIN_H */
+
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
