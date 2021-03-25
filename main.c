@@ -1,12 +1,14 @@
 #include "main.h"
 #include "string.h"
-#include "ADC_Voltage.h"
+#include "tm_stm32f4_adc.h"
+#include "PID_1.h"
 uint8_t g;
 uint16_t flag_10ms = 0;
 uint16_t flag_100ms = 0,a=0;
-
+ float rightMotorSpeed;
+ float leftMotorSpeed;
 uint8_t testcb;
-uint8_t adc;
+uint16_t adc;
 
 float duty = 50;
 uint8_t dir;
@@ -66,8 +68,8 @@ int main(void)
 		//BKPSRAM_Init();
 		//TIM7_INT_Init();// QTR_5RC Init
 		UART_Init();
-		//TIM6_INT_Init();
-		//TIM2_INT_Init();
+		TIM6_INT_Init();
+		TIM2_INT_Init();
 		TM_MFRC522_Init();
 	/* Initialize ADC1 */
 	//TM_ADC_InitADC(ADC1);
@@ -91,13 +93,14 @@ int main(void)
 	GPIO_InitTypeDef TestCB;
 	TestCB.GPIO_Mode = GPIO_Mode_IN ;
 	TestCB.GPIO_OType = GPIO_OType_OD;
-	TestCB.GPIO_Pin = GPIO_Pin_14;
-	TestCB.GPIO_PuPd =   GPIO_PuPd_DOWN  ;
+	TestCB.GPIO_Pin = GPIO_Pin_14|GPIO_Pin_15;
+	TestCB.GPIO_PuPd =   GPIO_PuPd_UP  ;
 	TestCB.GPIO_Speed = GPIO_Fast_Speed  ;
-	GPIO_Init(GPIOD, &TestCB);
+	GPIO_Init(GPIOB, &TestCB);
 	
-	ADC_Config();
-
+	//ADC_Config();
+		TM_ADC_Init(ADC1, ADC_Channel_3);
+		TIM_SetCompare1(TIM3,1000);///16.13->3.3434
   while (1)
   {	
 				
@@ -123,8 +126,8 @@ int main(void)
 				 v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
 				 v_lift = ENC_Velocity(TIM8,374);
 					//v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
-					testcb = GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_14);
-				adc = Read_ADC();
+					testcb = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_14);
+				adc = TM_ADC_Read(ADC1, ADC_Channel_3);
 					//v_measure = (v_left_filter+v_right_filter)/2;
 				//v_lift = ENC_Velocity(TIM8,374);
 					// QTRSensorsCalibrate();
@@ -146,9 +149,9 @@ int main(void)
 				//u_=giaim_trongtam(e_,edot_);
 				//u = sat_100(10*u_);
 				//pre_error = error;
-				Run_Motor(LEFT_MOTOR,30);
-				Run_Motor(RIGHT_MOTOR,50);
-				Run_Motor(LIFT_MOTOR,50);
+				//Run_Motor(LEFT_MOTOR,30);
+				//Run_Motor(RIGHT_MOTOR,50);
+				//Run_Motor(LIFT_MOTOR,50);
 				flag_10ms = 0;
 				
 			}
@@ -197,7 +200,11 @@ void TIM2_IRQHandler()
     if (TIM_GetITStatus(TIM2, TIM_IT_Update))
     {
         // Begin interrupt Timer3 10ms code
-      c++;
+			c++;
+				udk = PID_velocity(v_ref,v_measure);
+			  delta_udk = PID_line(udk);
+			rightMotorSpeed = (udk- delta_udk)/10;
+			leftMotorSpeed =  (udk + delta_udk)/10;
 				//UART_PrintNumber("%.2f",3.5);
         // Clears the TIM2 interrupt pending bit
         TIM_ClearITPendingBit(TIM2, TIM_IT_Update);

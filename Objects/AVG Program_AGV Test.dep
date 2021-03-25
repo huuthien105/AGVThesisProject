@@ -1,7 +1,7 @@
 Dependencies for Project 'AVG Program', Target 'AGV Test': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\main.c)(0x605B005B)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (main.h)(0x605AFC0B)
+F (.\main.c)(0x605C5470)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (main.h)(0x605C44BF)
 I (stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -40,17 +40,16 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AE022)
 I (.\STM32F4xx_Mylib\inc\PWM.h)(0x605AA9AA)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (.\STM32F4xx_Mylib\inc\UART.h)(0x60517797)
 I (D:\AGVThesisProject\system_timetick.h)(0x603CCBB4)
 I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -59,7 +58,7 @@ I (.\STM32F4xx_Mylib\inc\Interrupt_Timer.h)(0x60584FA9)
 I (.\STM32F4xx_Mylib\inc\i2c.h)(0x605AE79C)
 I (.\STM32F4xx_Mylib\inc\LCD_2004.h)(0x605AE93D)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9AE028)
-I (.\STM32F4xx_Mylib\inc\ADC_Voltage.h)(0x605AFE36)
+I (.\STM32F4xx_Mylib\inc\PID_1.h)(0x605C4789)
 F (.\system_stm32f4xx.c)(0x57ED4A76)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
 I (stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
@@ -174,19 +173,18 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
-I (main.h)(0x605AFC0B)
+I (main.h)(0x605C44BF)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AE022)
 I (.\STM32F4xx_Mylib\inc\PWM.h)(0x605AA9AA)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (.\STM32F4xx_Mylib\inc\UART.h)(0x60517797)
 I (D:\AGVThesisProject\system_timetick.h)(0x603CCBB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -592,7 +590,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
 F (.\STM32F4xx_Mylib\src\PWM.c)(0x605AEEC0)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
 I (.\STM32F4xx_Mylib\inc\PWM.h)(0x605AA9AA)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -635,10 +633,9 @@ I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -690,7 +687,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9AE028)
 F (.\STM32F4xx_Mylib\src\Encoder.c)(0x605862A8)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\encoder.o --omf_browse .\objects\encoder.crf --depend .\objects\encoder.d)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -733,66 +730,9 @@ I (D:\AGVThesisProject\system_timetick.h)(0x603CCBB4)
 I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
-I (.\STM32F4xx_Mylib\inc\FuzzyLogic.h)(0x60544E11)
-I (.\STM32F4xx_Mylib\inc\Interrupt_Timer.h)(0x60584FA9)
-I (.\STM32F4xx_Mylib\inc\i2c.h)(0x605AE79C)
-I (.\STM32F4xx_Mylib\inc\LCD_2004.h)(0x605AE93D)
-F (.\STM32F4xx_Mylib\src\PID.c)(0x60544D69)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\pid.o --omf_browse .\objects\pid.crf --depend .\objects\pid.d)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
-I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
-I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
-I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D259EC6)
-I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D259EC6)
-I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D259EC6)
-I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F5BE4)
-I (D:\AGVThesisProject\system_stm32f4xx.h)(0x527CFAF0)
-I (D:\AGVThesisProject\stm32f4xx_conf.h)(0x52834920)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x5280BA9A)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x527CFCDC)
-I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
-I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
-I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AE022)
-I (.\STM32F4xx_Mylib\inc\PWM.h)(0x605AA9AA)
-I (.\STM32F4xx_Mylib\inc\UART.h)(0x60517797)
-I (D:\AGVThesisProject\system_timetick.h)(0x603CCBB4)
-I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
-I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
-I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -839,7 +779,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
 F (.\STM32F4xx_Mylib\src\QTR_5RC.c)(0x60583963)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\qtr_5rc.o --omf_browse .\objects\qtr_5rc.crf --depend .\objects\qtr_5rc.d)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -883,9 +823,8 @@ I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -972,7 +911,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 F (.\STM32F4xx_Mylib\src\FuzzyLogic.c)(0x60544E44)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\fuzzylogic.o --omf_browse .\objects\fuzzylogic.crf --depend .\objects\fuzzylogic.d)
 I (.\STM32F4xx_Mylib\inc\FuzzyLogic.h)(0x60544E11)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -1016,10 +955,9 @@ I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -1028,7 +966,7 @@ I (.\STM32F4xx_Mylib\inc\i2c.h)(0x605AE79C)
 I (.\STM32F4xx_Mylib\inc\LCD_2004.h)(0x605AE93D)
 F (.\STM32F4xx_Mylib\src\Interrupt_Timer.c)(0x60584F85)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\interrupt_timer.o --omf_browse .\objects\interrupt_timer.crf --depend .\objects\interrupt_timer.d)
 I (.\STM32F4xx_Mylib\inc\Interrupt_Timer.h)(0x60584FA9)
-I (D:\AGVThesisProject\main.h)(0x605AFC0B)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -1072,10 +1010,9 @@ I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
 I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
-I (.\STM32F4xx_Mylib\inc\PID.h)(0x604C7C27)
 I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
 I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
-I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x6046E207)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
 I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
@@ -1194,8 +1131,8 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
-F (.\STM32F4xx_Mylib\src\ADC_Voltage.c)(0x605B0051)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\adc_voltage.o --omf_browse .\objects\adc_voltage.crf --depend .\objects\adc_voltage.d)
-I (.\STM32F4xx_Mylib\inc\ADC_Voltage.h)(0x605AFE36)
+F (.\STM32F4xx_Mylib\src\tm_stm32f4_adc.c)(0x5FC505F3)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\tm_stm32f4_adc.o --omf_browse .\objects\tm_stm32f4_adc.crf --depend .\objects\tm_stm32f4_adc.d)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
 I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
 I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
@@ -1231,4 +1168,60 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
+F (.\STM32F4xx_Mylib\src\PID_1.c)(0x605C544E)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I D:\AGVThesisProject -I .\STM32F4xx_StdPeriph_Driver\inc -I .\STM32F4xx_Mylib\inc-I.\RTE\_AGV_Test-IC:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\thien\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000"-o .\objects\pid_1.o --omf_browse .\objects\pid_1.crf --depend .\objects\pid_1.d)
+I (.\STM32F4xx_Mylib\inc\PID_1.h)(0x605C4789)
+I (D:\AGVThesisProject\main.h)(0x605C44BF)
+I (D:\AGVThesisProject\stm32f4xx.h)(0x527CFAEA)
+I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D259EC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AE028)
+I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D259EC6)
+I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D259EC6)
+I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D259EC6)
+I (C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F5BE4)
+I (D:\AGVThesisProject\system_stm32f4xx.h)(0x527CFAF0)
+I (D:\AGVThesisProject\stm32f4xx_conf.h)(0x52834920)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x5280BA9A)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x527CFCDC)
+I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x527CFCDA)
+I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x527CFCDA)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AE022)
+I (.\STM32F4xx_Mylib\inc\PWM.h)(0x605AA9AA)
+I (.\STM32F4xx_Mylib\inc\UART.h)(0x60517797)
 I (D:\AGVThesisProject\system_timetick.h)(0x603CCBB4)
+I (D:\AGVThesisProject\stm32f4xx_it.h)(0x5ECE6EE7)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x604F27B9)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AE02A)
+I (.\STM32F4xx_Mylib\inc\Encoder.h)(0x6058540D)
+I (.\STM32F4xx_Mylib\inc\Bkpsram.h)(0x603DFF85)
+I (.\STM32F4xx_Mylib\inc\QTR_5RC.h)(0x605862E1)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h)(0x605C2D03)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_gpio.h)(0x6046E261)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_mfrc522.h)(0x60472F84)
+I (.\STM32F4xx_Mylib\inc\tm_stm32f4_spi.h)(0x6046F80F)
+I (.\STM32F4xx_Mylib\inc\FuzzyLogic.h)(0x60544E11)
+I (.\STM32F4xx_Mylib\inc\Interrupt_Timer.h)(0x60584FA9)
+I (.\STM32F4xx_Mylib\inc\i2c.h)(0x605AE79C)
+I (.\STM32F4xx_Mylib\inc\LCD_2004.h)(0x605AE93D)

@@ -46,7 +46,6 @@
 .\objects\encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\encoder.o: .\STM32F4xx_Mylib\inc\Encoder.h
-.\objects\encoder.o: .\STM32F4xx_Mylib\inc\PID.h
 .\objects\encoder.o: .\STM32F4xx_Mylib\inc\Bkpsram.h
 .\objects\encoder.o: .\STM32F4xx_Mylib\inc\QTR_5RC.h
 .\objects\encoder.o: .\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h

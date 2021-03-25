@@ -46,7 +46,6 @@
 .\objects\interrupt_timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\interrupt_timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\interrupt_timer.o: .\STM32F4xx_Mylib\inc\Encoder.h
-.\objects\interrupt_timer.o: .\STM32F4xx_Mylib\inc\PID.h
 .\objects\interrupt_timer.o: .\STM32F4xx_Mylib\inc\Bkpsram.h
 .\objects\interrupt_timer.o: .\STM32F4xx_Mylib\inc\QTR_5RC.h
 .\objects\interrupt_timer.o: .\STM32F4xx_Mylib\inc\tm_stm32f4_adc.h

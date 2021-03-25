@@ -488,11 +488,6 @@
               <FilePath>.\STM32F4xx_Mylib\src\Encoder.c</FilePath>
             </File>
             <File>
-              <FileName>PID.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\PID.c</FilePath>
-            </File>
-            <File>
               <FileName>Bkpsram.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\STM32F4xx_Mylib\src\Bkpsram.c</FilePath>
@@ -538,9 +533,14 @@
               <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>ADC_Voltage.c</FileName>
+              <FileName>tm_stm32f4_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\STM32F4xx_Mylib\src\ADC_Voltage.c</FilePath>
+              <FilePath>.\STM32F4xx_Mylib\src\tm_stm32f4_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID_1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STM32F4xx_Mylib\src\PID_1.c</FilePath>
             </File>
           </Files>
         </Group>
