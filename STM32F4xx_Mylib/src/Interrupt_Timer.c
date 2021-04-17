@@ -22,7 +22,7 @@ void TIM6_INT_Init(void)
 	TIM6->EGR |= (1<<0);	// UG: Update generation. Re-initializes the counter and updates registers
 	//TIM6->CNT = 399;		// Counter goes up to 250 to have 1s timer ???
 	TIM6->PSC = 8399;		// Sets prescaler to 64000. Timer clock is now 84MHz/(4200*10000)= 2Hz
-	TIM6->ARR = 9999;		// Counter goes up to 250 to have 1s timer399
+	TIM6->ARR = 99;		// Counter goes up to 250 to have 1s timer399
 }
 
 
@@ -56,7 +56,7 @@ void TIM2_INT_Init()
     // SubPriority = 0)
     NVIC_InitTypeDef NVIC_InitStruct;
     NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
-    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 1;
     NVIC_InitStruct.NVIC_IRQChannelSubPriority = 1;
     NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStruct);

@@ -73,15 +73,15 @@ float ENC_Velocity(TIM_TypeDef* TIMx,uint16_t N)
 	return vel;
 }
 
-float ENC_Position(TIM_TypeDef* TIMx,uint16_t N)
+float ENC_Position(TIM_TypeDef* TIMx,uint16_t N,float current_pos)
 {
 
 	int16_t xung_ENC ;
-	float pos;
+	
 	xung_ENC = TIM_GetCounter(TIMx);
-	pos = (xung_ENC-30000)*0.4/(N*4);
-	TIM_SetCounter(TIMx,30000);
-	return pos;
+	current_pos += (xung_ENC-30000)*8.5*3.14/(N*4);
+	TIM_SetCounter(TIMx,30000) ;
+	return current_pos;
 }
 
 //float V_1 = 0,tempV1 = 0;

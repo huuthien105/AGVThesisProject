@@ -1,7 +1,10 @@
 #include "main.h"
 #include "string.h"
 #include "tm_stm32f4_adc.h"
-#include "PID_1.h"
+#include "PID.h"
+#include "QTR_5RC.h"
+void TurnRight();
+void TurnLeft();
 uint8_t g;
 uint16_t flag_10ms = 0;
 uint16_t flag_100ms = 0,a=0;
@@ -14,26 +17,29 @@ float duty = 50;
 uint8_t dir;
 float x_ref = 5, x_measure;
 
-float udk=0, delta_udk = 0;
+float udk=0, delta_udk = 0,udk1=0;
 uint8_t CardID[5] = { 0x38, 0x02, 0x03, 0x04, 0x05}; 
 uint8_t ca = 0;
 extern uint16_t sensorValues[5];
 
 float v_left = 0, v_left_filter =0;
 float	v_right=0,v_right_filter =0;
-float v_ref = 15, v_measure =0;;
+float v_ref = 10, v_measure =0;;
 
 float v_lift = 0;
 
 uint16_t line_position=0;
 float f_line_position =0 ,line_ref =1000.0;
 
-float c=0;
 //uint16_t crc =0;
 //uint8_t crc1,crc2;
 uint8_t mess[6] ={ 0x11, 0x03, 0x00, 0x6B, 0x00, 0x03};
 
 float error =0,error_dot=0,pre_error=0,e_=0, edot_ =0,u_=0 ,u=0;
+
+uint16_t QTR_ReadRawValue[6];
+uint16_t QTR_ReadCalibValue[5];
+float pos_left = 0,pos_right=0;
 
 typedef struct{
 	uint16_t Header;
@@ -64,9 +70,9 @@ int main(void)
 	
 		PWM_Init();
 		ENC_Init();
-		//PID_Init();
+		PID_Init();
 		//BKPSRAM_Init();
-		//TIM7_INT_Init();// QTR_5RC Init
+		TIM7_INT_Init();// QTR_5RC Init
 		UART_Init();
 		TIM6_INT_Init();
 		TIM2_INT_Init();
@@ -99,39 +105,43 @@ int main(void)
 	GPIO_Init(GPIOB, &TestCB);
 	
 	//ADC_Config();
-		TM_ADC_Init(ADC1, ADC_Channel_3);
-		TIM_SetCompare1(TIM3,1000);///16.13->3.3434
+//		TM_ADC_Init(ADC1, ADC_Channel_3);
+	//	TIM_SetCompare1(TIM3,1000);///16.13->3.3434
+		 //QTRSensorsCalibrate();
+		 //QTRSensorsCalibrate();
+		Run_Motor(LEFT_MOTOR,30);
+		 Run_Motor(RIGHT_MOTOR,30);
+		 
+		 //TurnLeft();
   while (1)
   {	
 				
 		if(tick_flag == 1) //1ms
 			{
 				//u = TM_ADC_ReadVbat(ADC1);
-				//if (TM_MFRC522_Check(CardID) == MI_OK) {
-				 //ca = 1;
-				//}
-				//else ca =0;
+				if (TM_MFRC522_Check(CardID) == MI_OK) {
+				 ca = 1;
+					TurnLeft();
+					//Run_Motor(LEFT_MOTOR,0);
+					//Run_Motor(RIGHT_MOTOR,0);
+				}
+				else ca =0;
 				
-				flag_10ms++;
 				flag_100ms++;
+				flag_10ms++;
 				tick_flag = 0;
-				
+				//pos_right = ENC_Position(ENCR_TIM,363,pos_right);
 				
 			}
    if(flag_10ms == 10)
 			{
-					v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
-					//v_left_filter = LowpassFilter(v_left,LEFT_MOTOR);
 					
-				 v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
-				 v_lift = ENC_Velocity(TIM8,374);
-					//v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
-					testcb = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_14);
-				adc = TM_ADC_Read(ADC1, ADC_Channel_3);
-					//v_measure = (v_left_filter+v_right_filter)/2;
+					//testcb = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_14);
+					//adc = TM_ADC_Read(ADC1, ADC_Channel_3);
+					
 				//v_lift = ENC_Velocity(TIM8,374);
-					// QTRSensorsCalibrate();
-					//line_position = QTRSensorsReadLine(sensorValues);
+
+					
 				//f_line_position = (float)(line_position);
 				//	udk = PID_Velocity(v_ref, v_measure);
 					//delta_udk = PID_Line(line_ref,line_position); // line ref = 1000
@@ -149,27 +159,31 @@ int main(void)
 				//u_=giaim_trongtam(e_,edot_);
 				//u = sat_100(10*u_);
 				//pre_error = error;
-				//Run_Motor(LEFT_MOTOR,30);
+				//Run_Motor(LEFT_MOTOR,50);
 				//Run_Motor(RIGHT_MOTOR,50);
-				//Run_Motor(LIFT_MOTOR,50);
+				//Run_Motor(LIFT_MOTOR,30);
+				//QTRSensorsReadCalibrated(QTR_ReadRawValue);
+				//QTRSensorsRead(QTR_ReadRawValue);
 				flag_10ms = 0;
 				
 			}
 		if(flag_100ms == 1000) // Truyen nhan UART
 			{
+				
 				//UART_PrintNumber("%f.2",TIM_GetCounter(TIM4));
-				send_frame.Header = 0xFFAA;
-				send_frame.FunctionCode = 0xA0;
-				send_frame.AGVID = 1;
-				send_frame.Velocity= 15.2;
-				send_frame.Udk= 75.23;
-				send_frame.Line_Position = 1125.0;
-				send_frame.delta_Udk = 30.15;
+				//send_frame.Header = 0xFFAA;
+				//send_frame.FunctionCode = 0xA0;
+				//send_frame.AGVID = 1;
+				//send_frame.Velocity= 15.2;
+				//send_frame.Udk= 75.23;
+				//send_frame.Line_Position = 1125.0;
+				//send_frame.delta_Udk = 30.15;
 				//USART_SendData(USART2, x[1]);
 				//delay_01ms(1);
 				//USART_SendData(USART2, x[2]);
-				UART_SendData((uint8_t *) &send_frame ,sizeof(send_frame) ) ;
-				//UART_PrintNumber("%.2f",2.5);
+				//UART_SendData((uint8_t *) &send_frame ,sizeof(send_frame) ) ;
+				//UART_PrintNumber("%.2f",line_position);
+				//UART_Print("   ");
 				//UART_PrintNumber("%.2f",7.5);
 				//UART_PrintNumber("%.2f",9.5);
 				//UART_PrintNumber("%.2f",11.5);
@@ -177,10 +191,11 @@ int main(void)
 				//UART_PrintNumber("%.2f",v_lift);
 				//c=c+10;;
 				//delay_01ms(200);
-				LCD_Clear();
+				//LCD_Clear();
 				//char s[] = "Ab";
-				LCD_Puts("abcd");
+				//LCD_Puts("abcd");
 				flag_100ms = 0;
+				
 			}
   }
 }
@@ -188,10 +203,26 @@ int main(void)
 void TIM6_DAC_IRQHandler()	// Overrides the weak implementation of the IRQ in the startup file
 {
 	TIM6->SR = ~TIM_SR_UIF;
-	// Begin interrupt Timer6 40ms code
-	//UART_PrintNumber("%.2f",c);
-	//c++;
-	__NVIC_ClearPendingIRQ(TIM6_DAC_IRQn);
+	// Begin interrupt Timer6 10ms code
+				
+				//v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
+				//v_left_filter = LowpassFilter(v_left,LEFT_MOTOR);
+					
+				//v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
+				//v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
+				//v_lift = ENC_Velocity(TIM8,374);
+				
+				//v_measure = (v_left_filter+v_right_filter)/2;
+				//udk = PID_Velocity(v_ref,v_measure);
+				//udk = 30;
+			  //delta_udk = PID_Line(1000,line_position,udk);
+				//rightMotorSpeed = (udk - delta_udk/30);
+				//leftMotorSpeed =  (udk + delta_udk/30);
+				//Run_Motor(LEFT_MOTOR,0);
+				//Run_Motor(RIGHT_MOTOR,0);
+	
+	
+				__NVIC_ClearPendingIRQ(TIM6_DAC_IRQn);
 }
 
 void TIM2_IRQHandler()
@@ -199,15 +230,62 @@ void TIM2_IRQHandler()
     // Checks whether the TIM2 interrupt has occurred or not
     if (TIM_GetITStatus(TIM2, TIM_IT_Update))
     {
-        // Begin interrupt Timer3 10ms code
-			c++;
-				udk = PID_velocity(v_ref,v_measure);
-			  delta_udk = PID_line(udk);
-			rightMotorSpeed = (udk- delta_udk)/10;
-			leftMotorSpeed =  (udk + delta_udk)/10;
+       // Begin interrupt Timer3 40ms code
+			line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
 				//UART_PrintNumber("%.2f",3.5);
         // Clears the TIM2 interrupt pending bit
         TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
     }
 }
 
+void TurnRight()
+{   
+	pos_left = 0;
+	TIM_SetCounter(ENCL_TIM,30000) ;
+	Run_Motor(LEFT_MOTOR,40);
+	Run_Motor(RIGHT_MOTOR,0);
+	while(pos_left <30)
+	{
+		pos_left = ENC_Position(ENCL_TIM,363,pos_left);
+		
+		delay_ms(1);
+	}
+		Run_Motor(LEFT_MOTOR,30);
+		Run_Motor(RIGHT_MOTOR,30);
+				delay_ms(3000);
+	  //PIDflag = 0;
+    //Run_Motor(LEFT_MOTOR,-40);
+	  //Run_Motor(RIGHT_MOTOR,40);
+	  //delay_ms(500)
+	 //delay_ms(1200);
+	//Run_Motor(LEFT_MOTOR,30);
+	  //Run_Motor(RIGHT_MOTOR,30);
+	//delay_ms(2000);
+  	//while(line_position <500 || line_position > 1500)
+	  //{
+	    // Run_Motor(LEFT_MOTOR,-30);
+	     //Run_Motor(RIGHT_MOTOR,30);
+	  //} 
+		//PIDflag = 1;
+}
+void TurnLeft()
+{   
+	pos_right = 0;
+	pos_left = 0;
+	TIM_SetCounter(ENCR_TIM,30000);
+	TIM_SetCounter(ENCL_TIM,30000) ;
+	Run_Motor(LEFT_MOTOR,-45);
+	Run_Motor(RIGHT_MOTOR,40);
+	//delay_ms(1000);
+	
+	
+	while(pos_right < 12 || pos_left >-12)
+	{
+		pos_right = ENC_Position(ENCR_TIM,363,pos_right);
+		pos_left = ENC_Position(ENCL_TIM,363,pos_left);
+		delay_ms(1);
+	}
+		Run_Motor(LEFT_MOTOR,30);
+		Run_Motor(RIGHT_MOTOR,30);
+		delay_ms(2000);
+}

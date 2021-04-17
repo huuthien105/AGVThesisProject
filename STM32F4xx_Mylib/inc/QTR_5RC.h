@@ -14,7 +14,7 @@ void QTRPins_OUTPUT_Mode(void);
 void QTRPins_INPUT_Mode(void);
 void QTRSensorsRead(uint16_t *sensorValues);
 void QTRSensorsCalibrate(void);
-void QTRSensorsReadCalibrated(uint16_t *_sensorValues);
+uint16_t QTRSensorsReadCalibrated(uint16_t *_sensorValues);
 uint16_t QTRSensorsReadLine(uint16_t *_sensorValues);
 void TIM7_INT_Init(void);
 

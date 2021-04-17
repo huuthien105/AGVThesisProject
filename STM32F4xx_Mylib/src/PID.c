@@ -10,7 +10,7 @@ PID_Para motor1;
 float uk1 ;
 float sum_err;
 PID_Para PID_para_vel,PID_para_line;
-float Kp = 0.005, Ki = 0.1, Kd=0.05;
+//float Kp = 0.005, Ki = 0.1, Kd=0.05;
 float Error_value=0, P_part =0,I_part =0,D_part =0;
 float out =0;
 float pre_Error_value=0,pre_Error=0,Error=0;
@@ -91,18 +91,27 @@ float PID_Velocity(float x_ref, float x_measure) // v_sv RPM
 	return  PID_para_vel.uk;
 }
 
-float PID_Line(float x_ref, float x_measure)
+float error1;
+float lastError = 0;
+float sum_error = 0;
+float Kp = 0.7;
+float Ki = 0.005;
+float Kd = 0.05;
+float P = 0,I=0,D=0,previous_error=0;
+float PID_Line(float x_ref, float x_measure,float udk)
 {
 	
-	Error_value = x_ref - x_measure;
-	P_part = Kp * Error_value;
-	I_part += Ki * Error_value *0.01;
-	D_part = Kd * (Error_value - pre_Error_value) / 0.01;
-	out= P_part + I_part + D_part;
-	pre_Error = Error;
+	error1 = x_ref - x_measure;
+	sum_error = sum_error + 0.01*error1;
+	float out = Kp*error1 + Ki*sum_error + (Kd/0.01)*(error1 - lastError);
+	lastError = error1;
 	 
-	//if (PID_para_line.uk >= 100) PID_para_line.uk =100;
-	//else if (PID_para_line.uk <= -100) PID_para_line.uk = -100;
+	if (out >= udk) out =udk;
+	else if (out <= -udk) out = -udk;
+	
+	
+	
+		
 	return  out;
 }
 

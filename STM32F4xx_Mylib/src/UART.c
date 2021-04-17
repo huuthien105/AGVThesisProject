@@ -132,12 +132,7 @@ void DMA1_Stream5_IRQHandler(void)
 	if (flag_reciever == 1 && pre_rxdata == 0x0A && rxdata == 0x0D ) 
 	{
 		
-		crc_cal = CRC_Cal(data_recieve,i-4);
-		memcpy(&crc_receive,&data_recieve[i-4], 2);
-		
-		if(crc_cal==crc_receive)
-			{
-			if(data_recieve[0] == 0xAC && data_recieve[1] == 0x01 )
+		if(data_recieve[0] == 0xAC && data_recieve[1] == 0x01 )
 			{
 				memcpy(&setkp_speed, &data_recieve[2], 4);
 				memcpy(&setki_speed, &data_recieve[6], 4);
@@ -152,10 +147,7 @@ void DMA1_Stream5_IRQHandler(void)
 				memcpy(&setkd_line, &data_recieve[10], 4);
 				//memcpy(&setVelocity, &data_recieve[2], 4);
 			}
-		}
 		
-	
-			
 		
 		flag_reciever = 0;
 		i =0;

@@ -56,4 +56,4 @@
 .\objects\main.o: .\STM32F4xx_Mylib\inc\i2c.h
 .\objects\main.o: .\STM32F4xx_Mylib\inc\LCD_2004.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: .\STM32F4xx_Mylib\inc\PID_1.h
+.\objects\main.o: .\STM32F4xx_Mylib\inc\PID.h
