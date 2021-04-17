@@ -1,9 +1,4 @@
-/*
- * PID.c
- *
- *  Created on: Jun 21, 2020
- *      Author: Nhan
- */
+
 #include "PID.h"
 
 PID_Para motor1;
@@ -14,6 +9,13 @@ PID_Para PID_para_vel,PID_para_line;
 float Error_value=0, P_part =0,I_part =0,D_part =0;
 float out =0;
 float pre_Error_value=0,pre_Error=0,Error=0;
+//float out_line =0;
+
+extern float setkp_line, setki_line, setkd_line;
+extern float setkp_speed, setki_speed, setkd_speed;
+extern uint8_t PIDflag;
+
+
 void PID_Init() // ham khoi tao
 {
 	PID_para_vel.Kp = 3;
@@ -69,19 +71,23 @@ void PID_GA25_Lifting(float x_ref, float x_measure) // v_sv RPM
 	if (motor1.uk >= 100) motor1.uk =100;
 	else if (motor1.uk <= -100) motor1.uk = -100;
 	uk1= motor1.uk;
-	//if (uk1 >= 0) Reserve_MotorA(uk1);
-	//else Foward_MotorA(fabs(uk1));
 	
 }
 
 float PID_Velocity(float x_ref, float x_measure) // v_sv RPM
 {
-	
+	if (PIDflag == 0) 
+	{
+		PID_para_vel.uk = 0;
+		PID_para_vel.uk_1 = 0;
+		return 0;
+	}	
+
 	
 	PID_para_vel.ek = x_ref - x_measure;
-	PID_para_vel.uk = PID_para_vel.uk_1 + PID_para_vel.Kp*(PID_para_vel.ek-PID_para_vel.ek_1)
-													+ PID_para_vel.Ki*PID_para_vel.Ts_*(PID_para_vel.ek + PID_para_vel.ek_1)*0.5
-													+ PID_para_vel.Kd*(PID_para_vel.ek-2*PID_para_vel.ek_1+PID_para_vel.ek_2)/PID_para_vel.Ts_;
+	PID_para_vel.uk = PID_para_vel.uk_1 + setkp_speed*(PID_para_vel.ek-PID_para_vel.ek_1)
+													+ setki_speed*PID_para_vel.Ts_*(PID_para_vel.ek + PID_para_vel.ek_1)*0.5
+													+setkd_speed*(PID_para_vel.ek-2*PID_para_vel.ek_1+PID_para_vel.ek_2)/PID_para_vel.Ts_;
 
 	PID_para_vel.uk_1 = PID_para_vel.uk;
 	PID_para_vel.ek_2 = PID_para_vel.ek_1;
@@ -91,27 +97,33 @@ float PID_Velocity(float x_ref, float x_measure) // v_sv RPM
 	return  PID_para_vel.uk;
 }
 
-float error1;
-float lastError = 0;
+float error1 = 0;
+float preError1 = 0;
 float sum_error = 0;
-float Kp = 0.7;
-float Ki = 0.005;
+
+float Kp = 0.5;
+float Ki = 0.0005;
 float Kd = 0.05;
+
+
 float P = 0,I=0,D=0,previous_error=0;
-float PID_Line(float x_ref, float x_measure,float udk)
+
+void PID_Line(float x_measure,float udk)
 {
+	if (PIDflag == 1)
+	{
+	   int error = x_measure - 1000;
+     int out_line = setkp_line * error + setkd_line * (error - preError1);
+     preError1 = error;
 	
-	error1 = x_ref - x_measure;
-	sum_error = sum_error + 0.01*error1;
-	float out = Kp*error1 + Ki*sum_error + (Kd/0.01)*(error1 - lastError);
-	lastError = error1;
-	 
-	if (out >= udk) out =udk;
-	else if (out <= -udk) out = -udk;
+   	 if (out_line > udk) out_line  = udk;
+  	 else if (out_line  < -udk) out_line  = -udk;
 	
+	   int rightMotorSpeed = udk + 2 + out_line/1.6;              
+	   int leftMotorSpeed = udk - out_line/1.6;                          
 	
-	
-		
-	return  out;
+	   Run_Motor(LEFT_MOTOR,leftMotorSpeed);
+	   Run_Motor(RIGHT_MOTOR,rightMotorSpeed);
+	}
 }
 

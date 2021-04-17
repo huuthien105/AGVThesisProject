@@ -1,12 +1,12 @@
 .\objects\lcd_2004.o: STM32F4xx_Mylib\src\LCD_2004.c
 .\objects\lcd_2004.o: .\STM32F4xx_Mylib\inc\I2C.h
 .\objects\lcd_2004.o: D:\AGVThesisProject\stm32f4xx.h
-.\objects\lcd_2004.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h
+.\objects\lcd_2004.o: C:\Users\PC\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h
 .\objects\lcd_2004.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\lcd_2004.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h
-.\objects\lcd_2004.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\lcd_2004.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
-.\objects\lcd_2004.o: C:\Users\thien\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h
+.\objects\lcd_2004.o: C:\Users\PC\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\lcd_2004.o: C:\Users\PC\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\lcd_2004.o: C:\Users\PC\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\lcd_2004.o: C:\Users\PC\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h
 .\objects\lcd_2004.o: D:\AGVThesisProject\system_stm32f4xx.h
 .\objects\lcd_2004.o: D:\AGVThesisProject\stm32f4xx_conf.h
 .\objects\lcd_2004.o: .\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h

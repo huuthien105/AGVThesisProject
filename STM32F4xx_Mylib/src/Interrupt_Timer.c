@@ -40,7 +40,7 @@ void TIM2_INT_Init()
     // Update Event (Hz) = 84MHz / ((4199 + 1) * (9999 + 1)) = 2 Hz
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
     TIM_TimeBaseInitStruct.TIM_Prescaler = 8399;
-    TIM_TimeBaseInitStruct.TIM_Period = 399;
+    TIM_TimeBaseInitStruct.TIM_Period = 999;
     TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
 

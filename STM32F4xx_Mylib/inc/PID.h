@@ -1,9 +1,3 @@
-/*
- * PID.h
- *
- *  Created on: Jun 21, 2020
- *      Author: Nhan
- */
 
 #ifndef PID_PID_H_
 #define PID_PID_H_
@@ -29,7 +23,7 @@ void PID_Init(void); // ham khoi tao
 void Restart_PID1(void);
 void PID_GA25_Lifting(float x_ref, float x_measure); // Vd_1 RPM
 float PID_Velocity(float x_ref, float x_measure);
-float PID_Line(float x_ref, float x_measure,float udk);
+void PID_Line( float x_measure,float udk);
 
 
 #endif /* PID_PID_H_ */

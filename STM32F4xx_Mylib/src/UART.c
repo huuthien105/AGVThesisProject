@@ -1,7 +1,7 @@
 #include "UART.h"
 #include <string.h>
 #include <stdio.h>
-#define	  Tx_BUFF_SIZE		16
+#define	  Tx_BUFF_SIZE		22
 #define   Rx_BUFF_SIZE    1
 void init_main(void);
 
@@ -13,7 +13,7 @@ uint8_t rxdata=0, pre_rxdata;
 int b = 0;
 int on = 0;
 int v_sv = 0;
-float setVelocity = 20; 
+float setVelocity; 
 float setki=0;
 int16_t crc_cal=0, crc_receive =0;
 
@@ -21,6 +21,21 @@ uint8_t crc1=0,crc2=0;
 float setkp_line =0, setki_line =0, setkd_line =0;
 float setkp_speed =0, setki_speed =0, setkd_speed =0;
 int flag_reciever =0, i=0;
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; // 0x01
+	uint8_t AGVID;
+	float Velocity;
+	float Udk;
+	float Line_Position;
+	float delta_Udk;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) SendAGVInfoStruct;
+
+extern SendAGVInfoStruct send_frame;
+
+
 void UART_Init(void)
 {
 	/* Create the typedef for GPIO,USART,DMA,NVIC */
@@ -132,7 +147,7 @@ void DMA1_Stream5_IRQHandler(void)
 	if (flag_reciever == 1 && pre_rxdata == 0x0A && rxdata == 0x0D ) 
 	{
 		
-		if(data_recieve[0] == 0xAC && data_recieve[1] == 0x01 )
+			if(data_recieve[0] == 0xAC && data_recieve[1] == 0x01 )
 			{
 				memcpy(&setkp_speed, &data_recieve[2], 4);
 				memcpy(&setki_speed, &data_recieve[6], 4);
@@ -145,16 +160,12 @@ void DMA1_Stream5_IRQHandler(void)
 				memcpy(&setkp_line, &data_recieve[2], 4);
 				memcpy(&setki_line, &data_recieve[6], 4);
 				memcpy(&setkd_line, &data_recieve[10], 4);
-				//memcpy(&setVelocity, &data_recieve[2], 4);
+				memcpy(&setVelocity, &data_recieve[2], 4);
 			}
-		
-		
+
 		flag_reciever = 0;
 		i =0;
-		
-		
 	}	
-
 	if ( flag_reciever==0 && pre_rxdata == 0xAA && rxdata == 0xFF)		flag_reciever = 1;
 
 	
