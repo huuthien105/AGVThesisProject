@@ -110,7 +110,11 @@ float P = 0,I=0,D=0,previous_error=0;
 
 void PID_Line(float x_measure,float udk)
 {
-	if (PIDflag == 1)
+	if(PIDflag == 0)
+	{	 
+	   preError1 = 0;
+	}
+	else if (PIDflag == 1)
 	{
 	   int error = x_measure - 1000;
      int out_line = setkp_line * error + setkd_line * (error - preError1);
@@ -119,8 +123,10 @@ void PID_Line(float x_measure,float udk)
    	 if (out_line > udk) out_line  = udk;
   	 else if (out_line  < -udk) out_line  = -udk;
 	
-	   int rightMotorSpeed = udk + 2 + out_line/1.6;              
-	   int leftMotorSpeed = udk - out_line/1.6;                          
+	   //int rightMotorSpeed = udk + 2 + out_line/1.6;              
+	 //  int leftMotorSpeed = udk - out_line/1.6;     
+ int rightMotorSpeed = udk + 2 + out_line/3;              
+	   int leftMotorSpeed = udk - out_line/3;  		
 	
 	   Run_Motor(LEFT_MOTOR,leftMotorSpeed);
 	   Run_Motor(RIGHT_MOTOR,rightMotorSpeed);

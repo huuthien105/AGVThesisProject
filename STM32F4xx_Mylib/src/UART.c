@@ -5,7 +5,10 @@
 #define   Rx_BUFF_SIZE    1
 void init_main(void);
 
-uint8_t 	rxbuff[Rx_BUFF_SIZE], data_recieve[26];
+uint8_t 	rxbuff[Rx_BUFF_SIZE], data_receive[26];
+uint8_t PathByteCount_Run = 0; 
+uint8_t pathRunReceive[30];
+
 char txbuff[Tx_BUFF_SIZE];	
 float kp,ki,kd;
 uint8_t rxdata=0, pre_rxdata;
@@ -19,8 +22,10 @@ int16_t crc_cal=0, crc_receive =0;
 
 uint8_t crc1=0,crc2=0;
 float setkp_line =0, setki_line =0, setkd_line =0;
+
 float setkp_speed =0, setki_speed =0, setkd_speed =0;
-int flag_reciever =0, i=0;
+int flag_receiver =0, i=0;
+uint8_t flagPathReceived = 0;
 
 typedef struct{
 	uint16_t Header;
@@ -138,35 +143,43 @@ void DMA1_Stream5_IRQHandler(void)
 	pre_rxdata = rxdata;
 	rxdata = rxbuff[0];
 	
-		if (flag_reciever == 1)
+		if (flag_receiver == 1)
 	{
-		data_recieve[i] = rxdata;
+		data_receive[i] = rxdata;
 		i++;
 	}
 	
-	if (flag_reciever == 1 && pre_rxdata == 0x0A && rxdata == 0x0D ) 
+	if (flag_receiver == 1 && pre_rxdata == 0x0A && rxdata == 0x0D ) 
 	{
 		
-			if(data_recieve[0] == 0xAC && data_recieve[1] == 0x01 )
+			if(data_receive[0] == 0xAC && data_receive[1] == 0x01 )
 			{
-				memcpy(&setkp_speed, &data_recieve[2], 4);
-				memcpy(&setki_speed, &data_recieve[6], 4);
-				memcpy(&setkd_speed, &data_recieve[10], 4);
-				memcpy(&setVelocity, &data_recieve[14], 4);
+			  	memcpy(&setkp_speed, &data_receive[2], 4);
+				  memcpy(&setki_speed, &data_receive[6], 4);
+				  memcpy(&setkd_speed, &data_receive[10], 4);
+				  memcpy(&setVelocity, &data_receive[14], 4);
 			}
 		
-			else if(data_recieve[0] == 0xAD && data_recieve[1] == 0x01 )
+			else if(data_receive[0] == 0xAD && data_receive[1] == 0x01 )
 			{
-				memcpy(&setkp_line, &data_recieve[2], 4);
-				memcpy(&setki_line, &data_recieve[6], 4);
-				memcpy(&setkd_line, &data_recieve[10], 4);
-				memcpy(&setVelocity, &data_recieve[2], 4);
+				  memcpy(&setkp_line, &data_receive[2], 4);
+				  memcpy(&setki_line, &data_receive[6], 4);
+				  memcpy(&setkd_line, &data_receive[10], 4);
+				  memcpy(&setVelocity, &data_receive[2], 4);
 			}
-
-		flag_reciever = 0;
+      else if(data_receive[0] == 0xA1 && data_receive[1] == 0x01)
+			{
+			    memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
+				  for(int i = 0; i < PathByteCount_Run; i++)                    // 
+			    {
+				      memcpy(&pathRunReceive[i], &data_receive[3 + i], 1);	// Luu gia tri Path vao array pathRunReceive					
+				  }
+					flagPathReceived = 1;
+			}
+		flag_receiver = 0;
 		i =0;
 	}	
-	if ( flag_reciever==0 && pre_rxdata == 0xAA && rxdata == 0xFF)		flag_reciever = 1;
+	if ( flag_receiver==0 && pre_rxdata == 0xAA && rxdata == 0xFF)		flag_receiver = 1;
 
 	
   //for(uint16_t i=0; i<Rx_BUFF_SIZE; i++)
