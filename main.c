@@ -12,15 +12,17 @@ void StopAGV(void);
 void RunPath(void);
 uint8_t GetNode(void);
 void ConvertOrient(uint8_t current_Orient);
+void Pick(void);
+void Drop(void);
+void delay_PID(uint16_t time);
 
-
-
-
+uint16_t countDelay = 0;
+float positionLift ;
 uint8_t flagPathRunComplete = 1; 
 uint8_t PIDflag = 1;
 uint8_t flagCheckRFID = 0;
 extern uint8_t flagPathReceived;
-
+extern uint8_t flagPickDropComplete;
 uint8_t g;
 uint16_t flag_10ms = 0;
 uint16_t flag_100ms = 0,a=0;
@@ -46,6 +48,7 @@ float v_lift = 0;
 
 uint16_t line_position=0;
 float f_line_position =0 ,line_ref =1000.0;
+float xa=0,y=1,flag=0,z=0,t=0;
 
 //uint16_t crc =0;
 //uint8_t crc1,crc2;
@@ -124,11 +127,11 @@ uint8_t TagID[60][5] = {{0x99, 0x2E, 0x09, 0xF0, 0x4E},
 												{0xF9, 0x98, 0x07, 0xF0, 0x96}}; 												
 											
 float error =0,error_dot=0,pre_error=0,e_=0, edot_ =0,u_=0 ,u=0;
-
+float positionLiftGoal = 0;
 uint16_t QTR_ReadRawValue[6];
 uint16_t QTR_ReadCalibValue[5];
 float pos_left = 0,pos_right=0;
-
+float test_bks ;
 typedef struct{
 	uint16_t Header;
 	uint8_t FunctionCode; // 0x01
@@ -160,7 +163,8 @@ int main(void)
 		PWM_Init();
 		ENC_Init();
 		PID_Init();
-		//BKPSRAM_Init();
+//	  PID_Lift_Init();
+		BKPSRAM_Init();
 		TIM7_INT_Init();// QTR_5RC Init
 		UART_Init();
 		TIM6_INT_Init();
@@ -178,8 +182,9 @@ int main(void)
 	//TM_ADC_EnableVbat();
 // cconffig encoder
 	//PID_Init1(1.25,0.5,0.1);
-	//TM_BKPSRAM_WriteFloat(0x00, 10.25);
-	//x_measure = TM_BKPSRAM_ReadFloat(0x00);
+	
+	//x = TM_BKPSRAM_ReadFloat(0x00);
+	//y = TM_BKPSRAM_ReadFloat(0x04);
 	//g = sizeof(x_measure);
 	//Run_Motor(LEFT_MOTOR,FOWARD,50.0);
 	//PID_Init();
@@ -193,46 +198,43 @@ int main(void)
 	TestCB.GPIO_Speed = GPIO_Fast_Speed  ;
 	GPIO_Init(GPIOB, &TestCB);
 	
+	
+	positionLift = TM_BKPSRAM_ReadFloat(0x00);
+				
 	//ADC_Config();
-//		TM_ADC_Init(ADC1, ADC_Channel_3);
+  //		TM_ADC_Init(ADC1, ADC_Channel_3);
 	//	TIM_SetCompare1(TIM3,1000);///16.13->3.3434         
   while (1)
   {	
-				
+    //TM_BKPSRAM_WriteFloat(0x00, 0);
+		TM_BKPSRAM_WriteFloat(0x00, positionLift);
+		//Run_Motor(LIFT_MOTOR,40);
 		if(tick_flag == 1) //1ms
 			{			
 				 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-				//u = TM_ADC_ReadVbat(ADC1);
-					 if(flagPathRunComplete == 1 && flagPathReceived == 1) // chay xong path hien tai && nhan frame path moi
-           {
+				 //u = TM_ADC_ReadVbat(ADC1);
+				 if(flagPathRunComplete == 1 && flagPathReceived == 1) // chay xong path hien tai && nhan frame path moi
+         {
 					    for(int i = 0; i< 30; i++) 
 						  {
-							 Path_Run[i] = pathRunReceive[i];          //luu path nhan duoc vao path_run
+							   Path_Run[i] = pathRunReceive[i];          //luu path nhan duoc vao path_run
 							}
-					//	  pre_Orient = Path_Run[2];
+						//  pre_Orient = Path_Run[2];
 							flagPathReceived = 0;
 						  flagPathRunComplete = 0;
-					 } 
+				 } 
 				 if (TM_MFRC522_Check(CardID) == MI_OK)     // them vao && flagCheckRFID == 0 OR ket hop voi preCurrentNode
 				 {
 				   flagCheckRFID = 1;			
-           RunPath();   
-					// Reverse();
-
-				}
-				else flagCheckRFID =0;
-				//	 currentNode = GetNode();
-					
-			/*	if(flagCheckRFID == 1)
-				{
-				       if(currentNode == 4 )
-				       {
-				          	TurnRight();
-				       }
-				       else if(currentNode == 25 || currentNode == 29 || currentNode == 50 ||currentNode == 46 || currentNode == 55  )
-					        TurnRight();       
-				}   */
-				flag_100ms++;
+					  RunPath(); 
+				 }
+				 else 
+				 {
+				     flagCheckRFID =0;
+					  // PIDflag = 1;
+				 } 
+				 
+          
 				flag_10ms++;
 				tick_flag = 0;
 				//pos_right = ENC_Position(ENCR_TIM,363,pos_right);
@@ -245,36 +247,37 @@ int main(void)
 				flag_10ms = 0;
 				
 			}
-		if(flag_100ms == 1000) // Truyen nhan UART
+		if(flag_100ms == 100) // Truyen nhan UART
 			{
-				
 				//LCD_Clear();
 				//char s[] = "Ab";
 				//LCD_Puts("abcd");
 				flag_100ms = 0;
 				
 			}
-  }
+		}
 }
 
 void TIM6_DAC_IRQHandler()	// Overrides the weak implementation of the IRQ in the startup file
 {
 	TIM6->SR = ~TIM_SR_UIF;
 	// Begin interrupt Timer6 10ms code
+	      countDelay++;
+	
+	      positionLift += Position_Lift(ENCLIFT_TIM,374);
+        PID_GA25_Lifting(positionLiftGoal,positionLift);
+	
 				v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
 				v_left_filter = LowpassFilter(v_left,LEFT_MOTOR);
 					
 				v_right = ENC_Velocity(ENCR_TIM,363);	//PA0 PA1
 				v_right_filter = LowpassFilter(v_right,RIGHT_MOTOR);
 	
-	
-				v_lift = ENC_Velocity(TIM8,374);
+			//	v_lift = ENC_Velocity(TIM8,374);
 				
 				v_measure = (v_left_filter+v_right_filter)/2;
 				udk = PID_Velocity(setVelocity,v_measure);
 	      PID_Line(line_position, udk);
-	
-	
 				__NVIC_ClearPendingIRQ(TIM6_DAC_IRQn);
 }
 
@@ -461,6 +464,145 @@ uint8_t GetNode()
 	  }
 }
 
+
+void Pick()
+{
+   
+	if(Path_Run[1] == 1) // level = 1
+	{    
+		  positionLiftGoal = 0;
+		  delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = 0;
+			}
+			
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+						Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = -10;
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -10;
+			}
+			
+	}
+	else 	if(Path_Run[1] == 2)
+	{
+		  positionLiftGoal = -40;
+      delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -40;
+			}
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+						Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = -50;
+			
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -50;
+			}
+	}
+	else 	if(Path_Run[1] == 3)
+	{
+		  positionLiftGoal = -80;
+      delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -80;
+			}
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+						Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = -90;
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -90;
+			}
+	}
+}
+
+void Drop()
+{
+   
+	if(Path_Run[PathByteCount_Run  - 1] == 1)
+	{    
+		  positionLiftGoal = -10;
+		  delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -10;
+			}
+			              // runback roi stop.
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+						Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = 0;
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = 0;
+			}
+			
+	}
+	else 	if(Path_Run[PathByteCount_Run  - 1] == 2)
+	{
+		  positionLiftGoal = -50;
+      delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -50;
+			}
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+						Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = -40;
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -40;
+			}
+	}
+	else 	if(Path_Run[PathByteCount_Run  - 1] == 3)
+	{
+		  positionLiftGoal = -90;
+      delay_ms(50);
+		  while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -90;
+			}
+			Run_Motor(LEFT_MOTOR, -30);
+	    Run_Motor(RIGHT_MOTOR, -30);
+	    delay_ms(1000);
+			Run_Motor(LEFT_MOTOR,0 );
+	    Run_Motor(RIGHT_MOTOR,0);
+			positionLiftGoal = -80;
+			delay_ms(50);
+			while(!flagPickDropComplete)
+			{
+			    positionLiftGoal = -80;
+			}
+	}
+}
+
+
+
+
 void RunPath()
 {   
 	
@@ -476,6 +618,14 @@ void RunPath()
 	// else
 	// {
 		 // tim index cua node hien tai trong path_run
+	   if( Path_Run[0] == 'P')
+		 {
+			    delay_PID(2000);
+          Reverse();
+			    delay_PID(500);
+          StopAGV();
+          Pick(); 			 
+		 }
 		 int indexCurrentNode = 0;
 		 for (int i = 2; i < PathByteCount_Run  - 2; i++)         
 		 {
@@ -539,60 +689,35 @@ void RunPath()
 			 // case 'L': {TurnLeft();  break;}//	 case 'L': TurnLeft(); break;
 			 // case 'R': {TurnRight(); break;}
 			 // case 'B': {Reverse();  break;}
-			  case 'G': {StopAGV();  flagPathRunComplete = 1;  break;}
+			  case 'G': 
+        {  
+					 if( Path_Run[indexCurrentNode + 2] == 'N')
+					 {
+					   StopAGV();						 		  
+					 } 
+				   else if( Path_Run[indexCurrentNode + 2] == 'D')
+					 {
+						  delay_PID(2000);
+					    Reverse();
+              delay_PID(500);
+						  StopAGV();
+						  Drop(); 
+					 } 		
+					 flagPathRunComplete = 1; 
+					 break;
+				}
 			  default: {PIDflag = 1;    break;}
 		 }	 
 	 //}
 }
 
-void ConvertOrient(uint8_t current_Orient)
-{
-   if(pre_Orient == 'N')
-	 {
-		  switch(current_Orient)
-	    {
-				case 'N': PIDflag = 1; break;
-				case 'E': TurnRight(); break;
-				case 'W': TurnLeft(); break;
-				case 'S': Reverse(); break;
-			}			
-		//	pre_Orient = current_Orient;
-	 }
-	 else if(pre_Orient == 'E')
-	 {
-		 switch(current_Orient)
-	    {
-				case 'N': TurnLeft(); break;
-				case 'E': PIDflag = 1; break;
-				case 'W': Reverse(); break;
-				case 'S': TurnRight(); break;
-			}			
-			pre_Orient = current_Orient;
-	 }
-	 else if(pre_Orient == 'S')
-	 {
-		 switch(current_Orient)
-	    {
-				case 'N': Reverse(); break;
-				case 'E': TurnLeft(); break;
-				case 'W': TurnRight(); break;
-				case 'S': PIDflag = 1; break;
-			}			
-			pre_Orient = current_Orient;
-	 
-	 }
-	 
-	  else if(pre_Orient == 'W')
-	 {
-		 switch(current_Orient)
-	    {
-				case 'N': TurnRight(); break;
-				case 'E': Reverse(); break;
-				case 'W': PIDflag = 1; break;
-				case 'S': TurnLeft(); break;
-			}			
-			pre_Orient = current_Orient;
-	 
-	 }
-	 
+
+void delay_PID(uint16_t time)
+{      
+	    uint16_t loop = time/10;
+      countDelay = 0;	    
+			while(countDelay < loop) // loop x 10ms
+			{                                           
+				PIDflag = 1;
+			}
 }

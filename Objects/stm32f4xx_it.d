@@ -42,7 +42,6 @@
 .\objects\stm32f4xx_it.o: D:\AGVThesisProject\main.h
 .\objects\stm32f4xx_it.o: .\STM32F4xx_Mylib\inc\UART.h
 .\objects\stm32f4xx_it.o: D:\AGVThesisProject\system_timetick.h
-.\objects\stm32f4xx_it.o: D:\AGVThesisProject\stm32f4xx_it.h
 .\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\stm32f4xx_it.o: .\STM32F4xx_Mylib\inc\Encoder.h

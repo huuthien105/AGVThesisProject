@@ -50,5 +50,6 @@ void ENC_Init(void);
 void ENC_config(TIM_TypeDef* TIMx,GPIO_TypeDef* A_GPIOx,GPIO_TypeDef* B_GPIOx,uint16_t A_GPIO_Pin_x,uint16_t B_GPIO_Pin_x );
 float ENC_Position(TIM_TypeDef* TIMx,uint16_t N,float current_pos);
 float ENC_Velocity(TIM_TypeDef* TIMx,uint16_t N);
+float Position_Lift(TIM_TypeDef* TIMx,uint16_t N);
 float LowpassFilter(float V,int dir);
 #endif /* ENCODER_ENCODER_H_ */

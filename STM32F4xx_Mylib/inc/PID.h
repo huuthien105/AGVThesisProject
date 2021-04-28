@@ -20,7 +20,7 @@ typedef struct
 
 float V_1Ts(float V); // ham lay mau
 void PID_Init(void); // ham khoi tao
-void Restart_PID1(void);
+//void PID_Lift_Init(void);
 void PID_GA25_Lifting(float x_ref, float x_measure); // Vd_1 RPM
 float PID_Velocity(float x_ref, float x_measure);
 void PID_Line( float x_measure,float udk);

@@ -22,8 +22,8 @@ int16_t crc_cal=0, crc_receive =0;
 
 uint8_t crc1=0,crc2=0;
 float setkp_line =0, setki_line =0, setkd_line =0;
-
 float setkp_speed =0, setki_speed =0, setkd_speed =0;
+float setkp_lift = 0.7, setki_lift = 2, setkd_lift = 0.0015;
 int flag_receiver =0, i=0;
 uint8_t flagPathReceived = 0;
 

@@ -30,11 +30,37 @@ void ENC_Init(void)
 	TIM_SetCounter(ENCR_TIM ,30000);
 		
 		//// Config ENC ENCLIFTA: PA0 (CH1-TIM5) ENCLIFTB: PA1 (CH2-TIM5)
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8,ENABLE);
+/*	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8,ENABLE);
 	ENC_config(TIM8,ENCLIFTA_GPIO_PORT,ENCLIFTB_GPIO_PORT,ENCLIFTA_PIN,ENCLIFTB_PIN);
 	GPIO_PinAFConfig(ENCLIFTA_GPIO_PORT, ENCLIFTA_SOURCE, ENCLIFT_AF);  
 	GPIO_PinAFConfig(ENCLIFTB_GPIO_PORT, ENCLIFTB_SOURCE, ENCLIFT_AF);  
-	TIM_SetCounter(TIM8 ,30000);
+	TIM_SetCounter(TIM8,0);
+	*/
+	
+	GPIO_InitTypeDef GPIO_InitStructure;
+	 /* TIM1 clock enable */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8, ENABLE);	
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+	
+	/* TIM1 channel1,2 configuration */
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6 | GPIO_Pin_7;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource6, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource7, GPIO_AF_TIM8);
+
+	/* Initialise encoder interface */
+	TIM_EncoderInterfaceConfig(TIM8, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
+	
+	/* TIM enable counter */
+	TIM8->CNT = 0;
+	TIM_Cmd(TIM8, ENABLE);
+	
+	
 		
 		
 	}
@@ -79,8 +105,19 @@ float ENC_Position(TIM_TypeDef* TIMx,uint16_t N,float current_pos)
 	int16_t xung_ENC ;
 	
 	xung_ENC = TIM_GetCounter(TIMx);
-	current_pos += (xung_ENC-30000)*8.5*3.14/(N*4);
+	current_pos += (xung_ENC-30000)*8.5*3.14/(N*4);    
 	TIM_SetCounter(TIMx,30000) ;
+	return current_pos;
+}
+
+float Position_Lift(TIM_TypeDef* TIMx,uint16_t N)
+{
+
+	int16_t xung_ENC ;
+	float current_pos;
+	xung_ENC = TIM_GetCounter(TIMx);
+	current_pos  = (float)(xung_ENC)*4/(N*4);     // 1 vong = 4mm
+  TIM_SetCounter(TIMx,0);
 	return current_pos;
 }
 
