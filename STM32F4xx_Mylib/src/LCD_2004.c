@@ -185,10 +185,16 @@ void LCD_Clear(void)
 	LCD_WriteCmd(CLR_SCR);
 }
 
-void LCD_NewLine(void)
+void LCD_NewLine(uint8_t line)
 {
-	
-	LCD_WriteCmd(0xc0);
+	if(line == 1)
+	  LCD_WriteCmd(0x80 | 0x00);
+	else if(line == 2)
+	  LCD_WriteCmd(0x80 | 0x40);
+	else if(line == 3)
+	  LCD_WriteCmd(0x80 | 0x14);
+	else 
+		LCD_WriteCmd(0x80 | 0x54);
 }
 
 void LCD_BackLight(uint8_t u8BackLight)

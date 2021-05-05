@@ -23,7 +23,7 @@ extern void delay_ms(uint32_t u32DelayInMs);
 void LCD_Init(void);
 void LCD_Puts(char *szStr);
 void LCD_Clear(void);
-void LCD_NewLine(void);
+void LCD_NewLine(uint8_t line);
 void LCD_BackLight(uint8_t u8BackLight);
 
 #endif

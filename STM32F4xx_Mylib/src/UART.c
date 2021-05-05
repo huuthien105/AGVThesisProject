@@ -168,7 +168,7 @@ void DMA1_Stream5_IRQHandler(void)
 				  memcpy(&setVelocity, &data_receive[2], 4);
 			}
       else if(data_receive[0] == 0xA1 && data_receive[1] == 0x01)
-			{
+			{     
 			    memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
 				  for(int i = 0; i < PathByteCount_Run; i++)                    // 
 			    {
