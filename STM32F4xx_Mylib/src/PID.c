@@ -4,7 +4,7 @@
 //PID_Para motor1;
 float uk1 ;
 float sum_err;
-PID_Para PID_para_vel,PID_para_line, PID_para_lift;
+PID_Para PID_para_vel,PID_para_line, PID_para_lift, PID_para_Turn_Left, PID_para_Turn_Right;
 float Error_value=0, P_part =0,I_part =0,D_part =0;
 float out =0;
 float pre_Error_value=0,pre_Error=0,Error=0;
@@ -14,6 +14,8 @@ extern float setkp_speed, setki_speed, setkd_speed;
 extern float setkp_lift, setki_lift, setkd_lift;
 extern uint8_t PIDflag;
 uint8_t flagPickDropComplete = 0;
+extern uint8_t PIDflag_Turn_Right;
+extern uint8_t PIDflag_Turn_Left;
 
 void PID_Init() // ham khoi tao
 {
@@ -47,6 +49,29 @@ void PID_Init() // ham khoi tao
 	PID_para_lift.ek_2 = 0;
 	PID_para_lift.uk = 0;
 	PID_para_lift.uk_1 = 0;
+	
+	
+	PID_para_Turn_Left.Kp = 3;
+	PID_para_Turn_Left.Ki = 4;
+	PID_para_Turn_Left.Kd = 0.015;
+	PID_para_Turn_Left.Ts_ = 0.01;
+	PID_para_Turn_Left.ek = 0 ;
+	PID_para_Turn_Left.ek_1 = 0 ;
+	PID_para_Turn_Left.ek_2 = 0;
+	PID_para_Turn_Left.uk = 0;
+	PID_para_Turn_Left.uk_1 = 0;
+	
+	
+	
+	PID_para_Turn_Right.Kp = 3;
+	PID_para_Turn_Right.Ki = 4;
+	PID_para_Turn_Right.Kd = 0.015;
+	PID_para_Turn_Right.Ts_ = 0.01;
+	PID_para_Turn_Right.ek = 0 ;
+	PID_para_Turn_Right.ek_1 = 0 ;
+	PID_para_Turn_Right.ek_2 = 0;
+	PID_para_Turn_Right.uk = 0;
+	PID_para_Turn_Right.uk_1 = 0;
 	
 }
 
@@ -136,4 +161,67 @@ void PID_Line(float x_measure,float udk)
 	   Run_Motor(RIGHT_MOTOR,rightMotorSpeed);
 	}
 }
+
+
+
+void PID_Turn_Right(float x_ref, float x_measure) // v_sv RPM
+{
+	if (PIDflag_Turn_Right == 0) 
+	{
+		PID_para_Turn_Right.uk = 0;
+		PID_para_Turn_Right.uk_1 = 0;
+		
+	}	
+  else
+	{
+	   PID_para_Turn_Right.ek = x_ref - x_measure;
+     PID_para_Turn_Right.uk = PID_para_Turn_Right.uk_1 + 2*(PID_para_Turn_Right.ek-PID_para_Turn_Right.ek_1) 
+	                   + 2*PID_para_Turn_Right.Ts_*(PID_para_Turn_Right.ek + PID_para_Turn_Right.ek_1)*0.5 
+	                   + 0.015*(PID_para_Turn_Right.ek-2*PID_para_Turn_Right.ek_1+PID_para_Turn_Right.ek_2)/PID_para_Turn_Right.Ts_;
+
+	   PID_para_Turn_Right.uk_1 = PID_para_Turn_Right.uk;
+ 	   PID_para_Turn_Right.ek_2 = PID_para_Turn_Right.ek_1;
+	   PID_para_Turn_Right.ek_1 = PID_para_Turn_Right.ek;
+	
+	
+	   if (PID_para_Turn_Right.uk >= 100) PID_para_Turn_Right.uk =100;
+	   else if (PID_para_Turn_Right.uk <= -100) PID_para_Turn_Right.uk = -100;
+
+	   Run_Motor(LEFT_MOTOR, PID_para_Turn_Right.uk);
+		 Run_Motor(RIGHT_MOTOR, 0);
+
+  }
+}
+
+
+
+void PID_Turn_Left(float x_ref, float x_measure) // v_sv RPM
+{
+	if (PIDflag_Turn_Left == 0) 
+	{
+		PID_para_Turn_Left.uk = 0;
+		PID_para_Turn_Left.uk_1 = 0;
+		
+	}	
+  else
+	{
+	   PID_para_Turn_Left.ek = x_ref - x_measure;
+     PID_para_Turn_Left.uk = PID_para_Turn_Left.uk_1 + 2*(PID_para_Turn_Left.ek-PID_para_Turn_Left.ek_1) 
+	                   + 2*PID_para_Turn_Left.Ts_*(PID_para_Turn_Left.ek + PID_para_Turn_Left.ek_1)*0.5 
+	                   + 0.015*(PID_para_Turn_Left.ek-2*PID_para_Turn_Left.ek_1+PID_para_Turn_Left.ek_2)/PID_para_Turn_Left.Ts_;
+
+	   PID_para_Turn_Left.uk_1 = PID_para_Turn_Left.uk;
+ 	   PID_para_Turn_Left.ek_2 = PID_para_Turn_Left.ek_1;
+	   PID_para_Turn_Left.ek_1 = PID_para_Turn_Left.ek;
+	
+	
+	   if (PID_para_Turn_Left.uk >= 100) PID_para_Turn_Left.uk =100;
+	   else if (PID_para_Turn_Left.uk <= -100) PID_para_Turn_Left.uk = -100;
+
+	   Run_Motor(RIGHT_MOTOR, PID_para_Turn_Left.uk);
+		 Run_Motor(LEFT_MOTOR, 0);
+
+  }
+}
+
 

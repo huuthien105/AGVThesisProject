@@ -26,7 +26,7 @@ float setkp_speed =0, setki_speed =0, setkd_speed =0;
 float setkp_lift = 0.7, setki_lift = 2, setkd_lift = 0.0015;
 int flag_receiver =0, i=0;
 uint8_t flagPathReceived = 0;
-
+extern uint8_t flagCompleteTask;
 typedef struct{
 	uint16_t Header;
 	uint8_t FunctionCode; // 0x01
@@ -40,6 +40,66 @@ typedef struct{
 
 extern SendAGVInfoStruct send_frame;
 
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; // 0xC1
+	uint8_t AGVID;
+  uint8_t ACK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) ACK_Frame_Speed;
+
+ACK_Frame_Speed send_ACK_Speed;
+
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; // 0xC1
+	uint8_t AGVID;
+  uint8_t ACK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) ACK_Frame_Line;
+
+ACK_Frame_Line send_ACK_Line;
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; // 0xC1
+	uint8_t AGVID;
+  uint8_t ACK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) ACK_Frame_Path;
+
+ACK_Frame_Path send_ACK_Path;
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; 
+	uint8_t AGVID;
+  uint8_t NAK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) NAK_Frame_Speed;
+
+NAK_Frame_Speed send_NAK_Speed;
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; 
+	uint8_t AGVID;
+  uint8_t NAK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) NAK_Frame_Line;
+
+NAK_Frame_Line send_NAK_Line;
+
+typedef struct{
+	uint16_t Header;
+	uint8_t FunctionCode; 
+	uint8_t AGVID;
+  uint8_t NAK;
+	uint16_t EndOfFrame;
+}__attribute__((packed)) NAK_Frame_Path;
+
+NAK_Frame_Path send_NAK_Path;
 
 void UART_Init(void)
 {
@@ -134,6 +194,64 @@ void UART_Init(void)
   DMA_ITConfig(DMA1_Stream5, DMA_IT_TC, ENABLE);
 }
 
+		
+void Send_ACK_Speed(void)          // ACD de xac nhan du lieu da nhan hop le
+{
+    send_ACK_Speed.Header = 0xFFAA;
+	  send_ACK_Speed.FunctionCode = 0xC1;
+    send_ACK_Speed.AGVID = 1;
+	  send_ACK_Speed.ACK = 'A';
+	  send_ACK_Speed.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_ACK_Speed ,sizeof(send_ACK_Speed)) ;
+}
+void Send_ACK_Line(void)          // ACD de xac nhan du lieu da nhan hop le
+{
+    send_ACK_Line.Header = 0xFFAA;
+	  send_ACK_Line.FunctionCode = 0xC2;
+    send_ACK_Line.AGVID = 1;
+	  send_ACK_Line.ACK = 'A';
+	  send_ACK_Line.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_ACK_Line ,sizeof(send_ACK_Line)) ;
+}
+void Send_ACK_Path(void)          // ACD de xac nhan du lieu da nhan hop le
+{
+    send_ACK_Path.Header = 0xFFAA;
+	  send_ACK_Path.FunctionCode = 0xC3;
+    send_ACK_Path.AGVID = 1;
+	  send_ACK_Path.ACK = 'A';
+	  send_ACK_Path.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_ACK_Path ,sizeof(send_ACK_Path)) ;
+}
+//NAK khi nhan du lieu sai, khong trung FunctionCode
+void Send_NAK_Speed(void)           
+{
+    send_NAK_Speed.Header = 0xFFAA;
+	  send_NAK_Speed.FunctionCode = 0xD0;         
+    send_NAK_Speed.AGVID = 1;
+	  send_NAK_Speed.NAK = 'N';
+	  send_NAK_Speed.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_NAK_Speed ,sizeof(send_NAK_Speed)) ;
+}
+void Send_NAK_Line(void)           
+{
+    send_NAK_Line.Header = 0xFFAA;
+	  send_NAK_Line.FunctionCode = 0xD1;         
+    send_NAK_Line.AGVID = 1;
+	  send_NAK_Line.NAK = 'N';
+	  send_NAK_Line.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_NAK_Line ,sizeof(send_NAK_Line)) ;
+}
+
+void Send_NAK_Path(void)           
+{
+    send_NAK_Path.Header = 0xFFAA;
+	  send_NAK_Path.FunctionCode = 0xD2;         
+    send_NAK_Path.AGVID = 1;
+	  send_NAK_Path.NAK = 'N';
+	  send_NAK_Path.EndOfFrame = 0x0A0D;
+	  UART_SendData((uint8_t *) &send_NAK_Path ,sizeof(send_NAK_Path)) ;
+}
+
 
 void DMA1_Stream5_IRQHandler(void)
 {
@@ -152,32 +270,57 @@ void DMA1_Stream5_IRQHandler(void)
 	if (flag_receiver == 1 && pre_rxdata == 0x0A && rxdata == 0x0D ) 
 	{
 		
+		     crc_cal = CRC_Cal(data_receive,i-4);
+		     memcpy(&crc_receive,&data_receive[i-4], 2);
+		   
 			if(data_receive[0] == 0xAC && data_receive[1] == 0x01 )
 			{
-			  	memcpy(&setkp_speed, &data_receive[2], 4);
-				  memcpy(&setki_speed, &data_receive[6], 4);
-				  memcpy(&setkd_speed, &data_receive[10], 4);
-				  memcpy(&setVelocity, &data_receive[14], 4);
+				  if(crc_cal != crc_receive)
+						  Send_NAK_Speed();
+					else
+					{
+					   memcpy(&setkp_speed, &data_receive[2], 4);
+				     memcpy(&setki_speed, &data_receive[6], 4);
+				     memcpy(&setkd_speed, &data_receive[10], 4);
+				     memcpy(&setVelocity, &data_receive[14], 4);
+				     Send_ACK_Speed();
+					}
+			  	
 			}
 		
 			else if(data_receive[0] == 0xAD && data_receive[1] == 0x01 )
 			{
-				  memcpy(&setkp_line, &data_receive[2], 4);
-				  memcpy(&setki_line, &data_receive[6], 4);
-				  memcpy(&setkd_line, &data_receive[10], 4);
-				  memcpy(&setVelocity, &data_receive[2], 4);
+				  if(crc_cal != crc_receive)
+						  Send_NAK_Line();
+					else
+					{
+				     memcpy(&setkp_line, &data_receive[2], 4);
+				     memcpy(&setki_line, &data_receive[6], 4);
+				     memcpy(&setkd_line, &data_receive[10], 4);
+				     memcpy(&setVelocity, &data_receive[2], 4);
+				     Send_ACK_Line();
+					}
 			}
       else if(data_receive[0] == 0xA1 && data_receive[1] == 0x01)
 			{     
-			    memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
-				  for(int i = 0; i < PathByteCount_Run; i++)                    // 
-			    {
-				      memcpy(&pathRunReceive[i], &data_receive[3 + i], 1);	// Luu gia tri Path vao array pathRunReceive					
+				  if(crc_cal != crc_receive)
+						 Send_NAK_Path();
+					else
+					{
+			       memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
+				     for(int i = 0; i < PathByteCount_Run; i++)                    // 
+			       {
+				         memcpy(&pathRunReceive[i], &data_receive[3 + i], 1);	// Luu gia tri Path vao array pathRunReceive					
+				     }
+					   flagPathReceived = 1;
+						 flagCompleteTask = 0;
+					   Send_ACK_Path();
 				  }
-					flagPathReceived = 1;
 			}
+			
 		flag_receiver = 0;
 		i =0;
+
 	}	
 	if ( flag_receiver==0 && pre_rxdata == 0xAA && rxdata == 0xFF)		flag_receiver = 1;
 
@@ -243,5 +386,3 @@ void UART_SendData( uint8_t *s_data, uint16_t size )
 						
 		return CRCFull;
 	}
-		
-	

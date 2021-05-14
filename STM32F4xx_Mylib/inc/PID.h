@@ -24,6 +24,7 @@ void PID_Init(void); // ham khoi tao
 void PID_GA25_Lifting(float x_ref, float x_measure); // Vd_1 RPM
 float PID_Velocity(float x_ref, float x_measure);
 void PID_Line( float x_measure,float udk);
-
+void PID_Turn_Left(float x_ref, float x_measure) ;
+void PID_Turn_Right(float x_ref, float x_measure) ;
 
 #endif /* PID_PID_H_ */

@@ -16,7 +16,8 @@ void Pick(void);
 void Drop(void);
 void delay_PID(uint16_t time);
 
-
+uint8_t PIDflag_Turn_Right = 0;
+uint8_t PIDflag_Turn_Left = 0;
 uint16_t countDelay = 0;
 float positionLift ;
 uint8_t flagPathRunComplete = 1; 
@@ -148,7 +149,8 @@ typedef struct{
 	float Udk;
 	float Line_Position;
 	float delta_Udk;
-//	uint8_t CurrentNode;
+	uint8_t CurrentNode;
+	char currentOrient;    // currentOrient tuong ung voi preOrient trong code C
 	uint16_t EndOfFrame;
 	
 }__attribute__((packed)) SendAGVInfoStruct;
@@ -158,7 +160,7 @@ SendAGVInfoStruct send_frame;
 
 typedef struct{
 	uint16_t Header;
-	uint8_t FunctionCode; // 0x01
+	uint8_t FunctionCode; // 0xC0
 	uint8_t AGVID;
   uint8_t CompleteTask;
 //	float noValue1;
@@ -166,7 +168,7 @@ typedef struct{
 //	float noValue3;
 	//uint8_t noValue4;
 	//uint16_t noValue5;
-//	uint8_t CurrentNode;
+	//uint8_t CurrentNode;
 	uint16_t EndOfFrame;
 	
 }__attribute__((packed)) SendComplete;
@@ -313,17 +315,19 @@ void TIM6_DAC_IRQHandler()	// Overrides the weak implementation of the IRQ in th
 				send_frame_completeTask.CompleteTask = 'C';
 				send_frame_completeTask.EndOfFrame = 0x0A0D;
 				UART_SendData((uint8_t *) &send_frame_completeTask ,sizeof(send_frame_completeTask)) ;
+			//  flagCompleteTask = 0;
 			
-				if(flagPathReceived == 1)
-				{
-					flagCompleteTask = 0;
-					if (TM_MFRC522_Check(CardID) != MI_OK)
-					PIDflag = 1;
-				}
-				
+			   if(flagPathReceived == 1)
+			   {
+					  flagCompleteTask = 0;
+					   if (TM_MFRC522_Check(CardID) != MI_OK)
+					    PIDflag = 1;
+			    }
 			}
+			
 	
-	      positionLift += Position_Lift(ENCLIFT_TIM,374);
+
+			   positionLift += Position_Lift(ENCLIFT_TIM,374);
         PID_GA25_Lifting(positionLiftGoal,positionLift);
 	
 				v_left = ENC_Velocity(ENCL_TIM,363);	//PD12 PD 13
@@ -335,8 +339,13 @@ void TIM6_DAC_IRQHandler()	// Overrides the weak implementation of the IRQ in th
 			//	v_lift = ENC_Velocity(TIM8,374);
 				
 				v_measure = (v_left_filter+v_right_filter)/2;
+			  
+			  PID_Turn_Left(40,v_measure);
+				PID_Turn_Right(30,v_measure);
+			
 				udk = PID_Velocity(setVelocity,v_measure);
 	      PID_Line(line_position, udk);
+	      
 				__NVIC_ClearPendingIRQ(TIM6_DAC_IRQn);
 }
 
@@ -347,8 +356,6 @@ void TIM2_IRQHandler()
     {
        // Begin interrupt Timer3 100ms code
 
-	/*		else
-			{
 			  send_frame.Header = 0xFFAA;
 				send_frame.FunctionCode = 0xA0;
 				send_frame.AGVID = 1;
@@ -356,10 +363,11 @@ void TIM2_IRQHandler()
 				send_frame.Udk= udk;
 				send_frame.Line_Position = line_position;
 				send_frame.delta_Udk = 0;
-			 // send_frame.CurrentNode = currentNode;
+			  send_frame.CurrentNode = currentNode;
+			  send_frame.currentOrient = pre_Orient;
 				send_frame.EndOfFrame = 0x0A0D;
 				UART_SendData((uint8_t *) &send_frame ,sizeof(send_frame)) ;
-			}   */
+			  
 			
 	
         // Clears the TIM2 interrupt pending bit
@@ -370,130 +378,66 @@ void TIM2_IRQHandler()
 void TurnRight()
 {   
 	
-//	flagCheckRFID = 0;
 	PIDflag = 0;
 	if(PIDflag == 0) flagCheckRFID = 0; 
-//	pos_right = 0;
-//	pos_left = 0;
-	//TIM_SetCounter(ENCR_TIM,30000);
-	//TIM_SetCounter(ENCL_TIM,30000) ;
-	
+
 	Run_Motor(LEFT_MOTOR, 0);
   Run_Motor(RIGHT_MOTOR, 0); 
 	delay_ms(250);
 	
-	Run_Motor(LEFT_MOTOR,47);
-	Run_Motor(RIGHT_MOTOR,0);
-	delay_ms(900);
+	Run_Motor(LEFT_MOTOR, 40);
+  Run_Motor(RIGHT_MOTOR, 0); 
 	
-/*	 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	while(pos_right < 11.5 || pos_left >-11.5)
-	{
-		line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-		pos_right = ENC_Position(ENCR_TIM,363,pos_right);
-		pos_left = ENC_Position(ENCL_TIM,363,pos_left);
-		delay_ms(1);
-	}      */
+  delay_ms(700);
+
+	PIDflag_Turn_Right = 1;
 	
-	 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	while(line_position < 650 || line_position > 1350)
+	loop:	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
+
+	if(line_position > 650 && line_position < 1350)
 	{
-		 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	  Run_Motor(LEFT_MOTOR,47);
-  	Run_Motor(RIGHT_MOTOR,0);
-	}        
-	Run_Motor(LEFT_MOTOR,0);
-	Run_Motor(RIGHT_MOTOR,0);
-	delay_ms(100);
-	
-  	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	while(line_position !=1000)
-	{
-		if(line_position > 1000) 
-		{   	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	      Run_Motor(LEFT_MOTOR,0);
-	      Run_Motor(RIGHT_MOTOR,40);
-        delay_ms(40);			
-		}
-		else if(line_position < 1000)
-		{   	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-				Run_Motor(LEFT_MOTOR,40);
-		    Run_Motor(RIGHT_MOTOR,0);
-			  delay_ms(40);		
-		}	
+		 // PIDflag = 1;
+	    PIDflag_Turn_Right = 0;
+		 
 	}
-	//delay_ms(50);
-//	Run_Motor(LEFT_MOTOR,0);
-	//Run_Motor(RIGHT_MOTOR,0);
-		//Run_Motor(LEFT_MOTOR,25);
-		//Run_Motor(RIGHT_MOTOR,25);
-	  //delay_ms(500);	
+	else
+		goto loop;
+
   	PIDflag = 1;
- 	  //delay_ms(500);
 }
+
 void TurnLeft()
 { 
-  //flagCheckRFID = 0;
+	
 	PIDflag = 0;
 	if(PIDflag == 0) flagCheckRFID = 0; 
-	//pos_right = 0;
-	//pos_left = 0;
-	//TIM_SetCounter(ENCR_TIM,30000);
-	//TIM_SetCounter(ENCL_TIM,30000);
-	
+
 	Run_Motor(LEFT_MOTOR, 0);
   Run_Motor(RIGHT_MOTOR, 0); 
 	delay_ms(250);
 	
-	Run_Motor(LEFT_MOTOR,0);   // - 39
-	Run_Motor(RIGHT_MOTOR,47);
-	delay_ms(1100);
+	Run_Motor(LEFT_MOTOR, 0);
+  Run_Motor(RIGHT_MOTOR, 40); 
+	
+  delay_ms(1500);
+
+	PIDflag_Turn_Left = 1;
 	
 	
-	/*while(pos_right < 11.5 || pos_left >-11.5)
+	
+	loop2:	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
+
+	if(line_position > 500 && line_position < 1500)
 	{
-		pos_right = ENC_Position(ENCR_TIM,363,pos_right);
-		pos_left = ENC_Position(ENCL_TIM,363,pos_left);
-		delay_ms(1);
-	}      */
-	 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	while(line_position < 650 || line_position > 1350)
-	{
-		 line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	   Run_Motor(LEFT_MOTOR,0);
-  	 Run_Motor(RIGHT_MOTOR,47);
+	    PIDflag_Turn_Left = 0;
+		  //PIDflag = 1;
 	}
-	
-		Run_Motor(LEFT_MOTOR,0);
-	Run_Motor(RIGHT_MOTOR,0);
-	delay_ms(100);
-	
-	line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-	while(line_position !=1000)
-	{
-		line_position = QTRSensorsReadCalibrated(QTR_ReadCalibValue);
-		if(line_position > 1000) 
-		{
-	      Run_Motor(LEFT_MOTOR,0);
-	      Run_Motor(RIGHT_MOTOR,40);	
-			delay_ms(40);
-		}
-		else if(line_position < 1000)
-		{
-				Run_Motor(LEFT_MOTOR,40);
-		    Run_Motor(RIGHT_MOTOR,0);
-			delay_ms(40);
-		}	
-	}
-	
-	//delay_ms(50);
-	
-	//	Run_Motor(LEFT_MOTOR,0);
-		//Run_Motor(RIGHT_MOTOR,0);
-	  //delay_ms(250);	
+	else
+		goto loop2;
   	PIDflag = 1;
- 	  //delay_ms(500);
+
 }
+
 
 void TurnBack()
 {
@@ -521,7 +465,7 @@ void Reverse()
 	
 	Run_Motor(LEFT_MOTOR, 0);
 	Run_Motor(RIGHT_MOTOR, 0);
-	delay_ms(500);
+	delay_ms(1000);
 	
 	Run_Motor(LEFT_MOTOR,-42);
 	Run_Motor(RIGHT_MOTOR,38);
@@ -542,8 +486,7 @@ void Reverse()
 		pos_left = ENC_Position(ENCL_TIM,363,pos_left);
 		delay_ms(1);
 	} 
-	
-           
+	       
 	Run_Motor(LEFT_MOTOR, 0);
 	Run_Motor(RIGHT_MOTOR, 0);
 	delay_ms(250);
