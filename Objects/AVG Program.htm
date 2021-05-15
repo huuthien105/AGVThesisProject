@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\AVG Program.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\AVG Program.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 10 16:18:25 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 15 22:45:31 2021
 <BR><P>
 <H3>Maximum Stack Usage =        324 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -126,8 +126,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[64]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<BR><BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
 <P><STRONG><a name="[66]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -239,8 +239,8 @@ Global Symbols
 <P><STRONG><a name="[159]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[67]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
 <P><STRONG><a name="[15a]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -564,7 +564,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[161]"></a>__lib_sel_fp_printf</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, _printf_fp_dec.o(.text), UNUSED)
@@ -595,8 +595,8 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> __2sprintf.o(.text)
 </UL>
 <P><STRONG><a name="[6e]"></a>__rt_locale</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_locale_intlibspace.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
 </UL>
 
 <P><STRONG><a name="[82]"></a>__aeabi_errno_addr</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text))
@@ -700,10 +700,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[87]"></a>_btod_ediv</STRONG> (Thumb, 42 bytes, Stack size 28 bytes, btod.o(CL$$btod_ediv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = _btod_ediv &rArr; _e2e
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = _btod_ediv &rArr; __btod_div_common
 </UL>
-<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_div_common
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_div_common
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
@@ -743,18 +743,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[1d]"></a>DMA1_Stream5_IRQHandler</STRONG> (Thumb, 424 bytes, Stack size 8 bytes, uart.o(i.DMA1_Stream5_IRQHandler))
+<P><STRONG><a name="[1d]"></a>DMA1_Stream5_IRQHandler</STRONG> (Thumb, 446 bytes, Stack size 8 bytes, uart.o(i.DMA1_Stream5_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DMA1_Stream5_IRQHandler &rArr; Send_NAK_Speed &rArr; UART_SendData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Speed
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Path
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Line
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Speed
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Path
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Line
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Speed
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Path
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Line
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Speed
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Path
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Line
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC_Cal
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
@@ -800,29 +800,27 @@ Global Symbols
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_config
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_EncoderInterfaceConfig
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ad]"></a>ENC_Position</STRONG> (Thumb, 142 bytes, Stack size 80 bytes, encoder.o(i.ENC_Position))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = ENC_Position &rArr; __aeabi_dmul
+<P><STRONG><a name="[ad]"></a>ENC_Position</STRONG> (Thumb, 114 bytes, Stack size 64 bytes, encoder.o(i.ENC_Position))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = ENC_Position &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reverse
 </UL>
 
-<P><STRONG><a name="[b5]"></a>ENC_Velocity</STRONG> (Thumb, 122 bytes, Stack size 64 bytes, encoder.o(i.ENC_Velocity))
+<P><STRONG><a name="[b3]"></a>ENC_Velocity</STRONG> (Thumb, 122 bytes, Stack size 64 bytes, encoder.o(i.ENC_Velocity))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = ENC_Velocity &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
@@ -830,7 +828,7 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -840,7 +838,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_EncoderInterfaceConfig
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
@@ -853,12 +851,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Init
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRPins_OUTPUT_Mode
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRPins_INPUT_Mode
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_config
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Pin
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_InitPins
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRPins_OUTPUT_Mode
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRPins_INPUT_Mode
 </UL>
 
 <P><STRONG><a name="[a6]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 70 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
@@ -870,23 +868,23 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e3]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit))
-<BR><BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsRead
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsRead
 </UL>
 
 <P><STRONG><a name="[123]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
 </UL>
 
 <P><STRONG><a name="[122]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
 </UL>
 
@@ -895,10 +893,10 @@ Global Symbols
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsRead
 </UL>
 
-<P><STRONG><a name="[b7]"></a>GetNode</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main.o(i.GetNode))
+<P><STRONG><a name="[b5]"></a>GetNode</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main.o(i.GetNode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GetNode &rArr; TM_MFRC522_Compare
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Compare
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Compare
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunPath
 </UL>
@@ -906,103 +904,103 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, system_timetick.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[b9]"></a>I2C_Read</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, i2c.o(i.I2C_Read))
+<P><STRONG><a name="[b7]"></a>I2C_Read</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, i2c.o(i.I2C_Read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = I2C_Read &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
 </UL>
 
-<P><STRONG><a name="[be]"></a>I2C_Write</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, i2c.o(i.I2C_Write))
+<P><STRONG><a name="[bc]"></a>I2C_Write</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, i2c.o(i.I2C_Write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
+<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
 
-<P><STRONG><a name="[bf]"></a>LCD_BackLight</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_BackLight))
+<P><STRONG><a name="[bd]"></a>LCD_BackLight</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_BackLight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = LCD_BackLight &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c1]"></a>LCD_Clear</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Clear))
+<P><STRONG><a name="[bf]"></a>LCD_Clear</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LCD_Clear &rArr; LCD_WriteCmd &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c3]"></a>LCD_Init</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, lcd_2004.o(i.LCD_Init))
+<P><STRONG><a name="[c1]"></a>LCD_Init</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, lcd_2004.o(i.LCD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = LCD_Init &rArr; LCD_WriteCmd &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_I2C_Init
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_I2C_Init
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c6]"></a>LCD_NewLine</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_NewLine))
+<P><STRONG><a name="[c4]"></a>LCD_NewLine</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_NewLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LCD_NewLine &rArr; LCD_WriteCmd &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c7]"></a>LCD_Puts</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Puts))
+<P><STRONG><a name="[c5]"></a>LCD_Puts</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Puts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LCD_Puts &rArr; LCD_Write_Chr &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
+<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c9]"></a>LCD_WaitBusy</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_WaitBusy))
+<P><STRONG><a name="[c7]"></a>LCD_WaitBusy</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_WaitBusy))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 
-<P><STRONG><a name="[c8]"></a>LCD_Write_Chr</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Write_Chr))
+<P><STRONG><a name="[c6]"></a>LCD_Write_Chr</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Write_Chr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = LCD_Write_Chr &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Puts
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Puts
 </UL>
 
-<P><STRONG><a name="[ca]"></a>LowpassFilter</STRONG> (Thumb, 524 bytes, Stack size 80 bytes, encoder.o(i.LowpassFilter))
+<P><STRONG><a name="[c8]"></a>LowpassFilter</STRONG> (Thumb, 524 bytes, Stack size 80 bytes, encoder.o(i.LowpassFilter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = LowpassFilter &rArr; __hardfp_exp &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1010,12 +1008,12 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>MemManage_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, system_timetick.o(i.MemManage_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[c4]"></a>My_I2C_Init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, i2c.o(i.My_I2C_Init))
+<P><STRONG><a name="[c2]"></a>My_I2C_Init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, i2c.o(i.My_I2C_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = My_I2C_Init &rArr; i2c_init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 </UL>
 
 <P><STRONG><a name="[4]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, system_timetick.o(i.NMI_Handler))
@@ -1028,14 +1026,15 @@ Global Symbols
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_INT_Init
 </UL>
 
-<P><STRONG><a name="[ce]"></a>PID_GA25_Lifting</STRONG> (Thumb, 404 bytes, Stack size 64 bytes, pid.o(i.PID_GA25_Lifting))
+<P><STRONG><a name="[ce]"></a>PID_GA25_Lifting</STRONG> (Thumb, 430 bytes, Stack size 64 bytes, pid.o(i.PID_GA25_Lifting))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PID_GA25_Lifting &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Run_Motor
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1048,12 +1047,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PID_Line &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Run_Motor
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1062,11 +1061,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PID_Turn_Left &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Run_Motor
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1075,11 +1074,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PID_Turn_Right &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Run_Motor
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1087,10 +1086,10 @@ Global Symbols
 <P><STRONG><a name="[d4]"></a>PID_Velocity</STRONG> (Thumb, 342 bytes, Stack size 64 bytes, pid.o(i.PID_Velocity))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PID_Velocity &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
@@ -1118,7 +1117,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = PWM_configOUT &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
@@ -1193,7 +1192,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnRight
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnLeft
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reverse
 </UL>
 
 <P><STRONG><a name="[a9]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
@@ -1206,10 +1204,10 @@ Global Symbols
 
 <P><STRONG><a name="[a4]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_INT_Init
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Init
 </UL>
 
@@ -1220,31 +1218,30 @@ Global Symbols
 <P><STRONG><a name="[d8]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_configOUT
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_configOUT
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[e5]"></a>Reverse</STRONG> (Thumb, 340 bytes, Stack size 8 bytes, main.o(i.Reverse))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = Reverse &rArr; ENC_Position &rArr; __aeabi_dmul
+<P><STRONG><a name="[e5]"></a>Reverse</STRONG> (Thumb, 238 bytes, Stack size 8 bytes, main.o(i.Reverse))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Reverse &rArr; ENC_Position &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Run_Motor
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsReadCalibrated
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunPath
 </UL>
 
-<P><STRONG><a name="[e6]"></a>RunPath</STRONG> (Thumb, 630 bytes, Stack size 16 bytes, main.o(i.RunPath))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = RunPath &rArr; Reverse &rArr; ENC_Position &rArr; __aeabi_dmul
+<P><STRONG><a name="[e6]"></a>RunPath</STRONG> (Thumb, 858 bytes, Stack size 16 bytes, main.o(i.RunPath))
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = RunPath &rArr; TurnRight &rArr; QTRSensorsReadCalibrated &rArr; QTRSensorsRead &rArr; QTRPins_OUTPUT_Mode &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnRight
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnLeft
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StopAGV
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reverse
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pick
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetNode
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetNode
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drop
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1283,7 +1280,7 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, system_timetick.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[9c]"></a>Send_ACK_Line</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Line))
+<P><STRONG><a name="[9e]"></a>Send_ACK_Line</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Line))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_ACK_Line &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1291,7 +1288,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[9e]"></a>Send_ACK_Path</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Path))
+<P><STRONG><a name="[9a]"></a>Send_ACK_Path</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Path))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_ACK_Path &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1299,7 +1296,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[9a]"></a>Send_ACK_Speed</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Speed))
+<P><STRONG><a name="[9c]"></a>Send_ACK_Speed</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_ACK_Speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_ACK_Speed &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1307,7 +1304,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Send_NAK_Line</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Line))
+<P><STRONG><a name="[9d]"></a>Send_NAK_Line</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Line))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_NAK_Line &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1315,7 +1312,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[9d]"></a>Send_NAK_Path</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Path))
+<P><STRONG><a name="[99]"></a>Send_NAK_Path</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Path))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_NAK_Path &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1323,7 +1320,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[99]"></a>Send_NAK_Speed</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Speed))
+<P><STRONG><a name="[9b]"></a>Send_NAK_Speed</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, uart.o(i.Send_NAK_Speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Send_NAK_Speed &rArr; UART_SendData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
@@ -1354,35 +1351,34 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[29]"></a>TIM2_IRQHandler</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, main.o(i.TIM2_IRQHandler))
+<P><STRONG><a name="[29]"></a>TIM2_IRQHandler</STRONG> (Thumb, 212 bytes, Stack size 8 bytes, main.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TIM2_IRQHandler &rArr; UART_SendData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[43]"></a>TIM6_DAC_IRQHandler</STRONG> (Thumb, 312 bytes, Stack size 8 bytes, main.o(i.TIM6_DAC_IRQHandler))
+<P><STRONG><a name="[43]"></a>TIM6_DAC_IRQHandler</STRONG> (Thumb, 276 bytes, Stack size 8 bytes, main.o(i.TIM6_DAC_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = TIM6_DAC_IRQHandler &rArr; LowpassFilter &rArr; __hardfp_exp &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SendData
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Lift
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Lift
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Velocity
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Right
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
@@ -1390,11 +1386,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f5]"></a>TIM7_INT_Init</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, qtr_5rc.o(i.TIM7_INT_Init))
+<P><STRONG><a name="[f4]"></a>TIM7_INT_Init</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, qtr_5rc.o(i.TIM7_INT_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM7_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1405,11 +1401,11 @@ Global Symbols
 
 <P><STRONG><a name="[ac]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_INT_Init
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Init
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsRead
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_config
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_configOUT
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsRead
 </UL>
 
 <P><STRONG><a name="[dc]"></a>TIM_CtrlPWMOutputs</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_CtrlPWMOutputs))
@@ -1426,7 +1422,7 @@ Global Symbols
 <P><STRONG><a name="[ae]"></a>TIM_GetCounter</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_GetCounter))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Lift
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
@@ -1474,7 +1470,7 @@ Global Symbols
 <P><STRONG><a name="[a7]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCounter))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Lift
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Init
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reverse
@@ -1482,40 +1478,40 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 
-<P><STRONG><a name="[b6]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
-<BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
+<P><STRONG><a name="[b4]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
+<BR><BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_INT_Init
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_config
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_configOUT
 </UL>
 
-<P><STRONG><a name="[f7]"></a>TM_GPIO_GetPortSource</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_GetPortSource))
-<BR><BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_Init
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_EnableClock
+<P><STRONG><a name="[f6]"></a>TM_GPIO_GetPortSource</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_GetPortSource))
+<BR><BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_Init
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_EnableClock
 </UL>
 
-<P><STRONG><a name="[f6]"></a>TM_GPIO_INT_EnableClock</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_INT_EnableClock))
+<P><STRONG><a name="[f5]"></a>TM_GPIO_INT_EnableClock</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_INT_EnableClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = TM_GPIO_INT_EnableClock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_GetPortSource
+<BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_GetPortSource
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 
-<P><STRONG><a name="[f8]"></a>TM_GPIO_INT_Init</STRONG> (Thumb, 170 bytes, Stack size 28 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_INT_Init))
+<P><STRONG><a name="[f7]"></a>TM_GPIO_INT_Init</STRONG> (Thumb, 170 bytes, Stack size 28 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_INT_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TM_GPIO_INT_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_GetPortSource
+<BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_GetPortSource
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 
-<P><STRONG><a name="[f9]"></a>TM_GPIO_InitAlternate</STRONG> (Thumb, 110 bytes, Stack size 40 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_InitAlternate))
+<P><STRONG><a name="[f8]"></a>TM_GPIO_InitAlternate</STRONG> (Thumb, 110 bytes, Stack size 40 bytes, tm_stm32f4_gpio.o(i.TM_GPIO_InitAlternate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_Init
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_EnableClock
+<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_Init
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_INT_EnableClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI6_INT_InitPins
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI5_INT_InitPins
@@ -1525,79 +1521,78 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI1_INT_InitPins
 </UL>
 
-<P><STRONG><a name="[fa]"></a>TM_MFRC522_AntennaOn</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_AntennaOn))
+<P><STRONG><a name="[f9]"></a>TM_MFRC522_AntennaOn</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_AntennaOn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = TM_MFRC522_AntennaOn &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Init
 </UL>
 
-<P><STRONG><a name="[fd]"></a>TM_MFRC522_Anticoll</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Anticoll))
+<P><STRONG><a name="[fc]"></a>TM_MFRC522_Anticoll</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Anticoll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = TM_MFRC522_Anticoll &rArr; TM_MFRC522_ToCard &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
 </UL>
 
-<P><STRONG><a name="[100]"></a>TM_MFRC522_CalculateCRC</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_CalculateCRC))
+<P><STRONG><a name="[ff]"></a>TM_MFRC522_CalculateCRC</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_CalculateCRC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = TM_MFRC522_CalculateCRC &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Halt
 </UL>
 
-<P><STRONG><a name="[f4]"></a>TM_MFRC522_Check</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Check))
+<P><STRONG><a name="[101]"></a>TM_MFRC522_Check</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Check))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = TM_MFRC522_Check &rArr; TM_MFRC522_Anticoll &rArr; TM_MFRC522_ToCard &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
 <BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Request
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Halt
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[101]"></a>TM_MFRC522_ClearBitMask</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ClearBitMask))
+<P><STRONG><a name="[100]"></a>TM_MFRC522_ClearBitMask</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ClearBitMask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TM_MFRC522_ClearBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
 </UL>
 
-<P><STRONG><a name="[b8]"></a>TM_MFRC522_Compare</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Compare))
+<P><STRONG><a name="[b6]"></a>TM_MFRC522_Compare</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Compare))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TM_MFRC522_Compare
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetNode
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetNode
 </UL>
 
 <P><STRONG><a name="[103]"></a>TM_MFRC522_Halt</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Halt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = TM_MFRC522_Halt &rArr; TM_MFRC522_ToCard &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
+<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
 </UL>
 
 <P><STRONG><a name="[104]"></a>TM_MFRC522_Init</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = TM_MFRC522_Init &rArr; TM_SPI_Init &rArr; TM_SPIx_Init &rArr; TM_SPI6_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_Init
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Reset
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_InitPins
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1611,79 +1606,79 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Init
 </UL>
 
-<P><STRONG><a name="[fb]"></a>TM_MFRC522_ReadRegister</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ReadRegister))
+<P><STRONG><a name="[fa]"></a>TM_MFRC522_ReadRegister</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ReadRegister))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TM_MFRC522_ReadRegister
 </UL>
 <BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
 </UL>
 
 <P><STRONG><a name="[102]"></a>TM_MFRC522_Request</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Request))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = TM_MFRC522_Request &rArr; TM_MFRC522_ToCard &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
 </UL>
 
 <P><STRONG><a name="[107]"></a>TM_MFRC522_Reset</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_Reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TM_MFRC522_Reset &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Init
 </UL>
 
-<P><STRONG><a name="[fc]"></a>TM_MFRC522_SetBitMask</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_SetBitMask))
+<P><STRONG><a name="[fb]"></a>TM_MFRC522_SetBitMask</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_SetBitMask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_AntennaOn
 </UL>
 
-<P><STRONG><a name="[ff]"></a>TM_MFRC522_ToCard</STRONG> (Thumb, 298 bytes, Stack size 48 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ToCard))
+<P><STRONG><a name="[fe]"></a>TM_MFRC522_ToCard</STRONG> (Thumb, 298 bytes, Stack size 48 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_ToCard))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = TM_MFRC522_ToCard &rArr; TM_MFRC522_SetBitMask &rArr; TM_MFRC522_WriteRegister
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
 </UL>
 <BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Request
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Halt
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
 </UL>
 
-<P><STRONG><a name="[fe]"></a>TM_MFRC522_WriteRegister</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_WriteRegister))
+<P><STRONG><a name="[fd]"></a>TM_MFRC522_WriteRegister</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, tm_stm32f4_mfrc522.o(i.TM_MFRC522_WriteRegister))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TM_MFRC522_WriteRegister
 </UL>
 <BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_Send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Init
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ToCard
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_SetBitMask
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Reset
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Request
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ClearBitMask
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_CalculateCRC
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Anticoll
 </UL>
 
 <P><STRONG><a name="[109]"></a>TM_SPI1_INT_InitPins</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, tm_stm32f4_spi.o(i.TM_SPI1_INT_InitPins))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI1_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1692,7 +1687,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI2_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1701,7 +1696,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI3_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1710,7 +1705,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI4_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1719,7 +1714,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI5_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1728,7 +1723,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TM_SPI6_INT_InitPins &rArr; TM_GPIO_InitAlternate &rArr; TM_GPIO_INT_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_InitCustomPinsCallback
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_GPIO_InitAlternate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPIx_Init
 </UL>
@@ -1750,7 +1745,7 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI1_INT_InitPins
 </UL>
 
-<P><STRONG><a name="[e9]"></a>TurnLeft</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, main.o(i.TurnLeft))
+<P><STRONG><a name="[e9]"></a>TurnLeft</STRONG> (Thumb, 144 bytes, Stack size 8 bytes, main.o(i.TurnLeft))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = TurnLeft &rArr; QTRSensorsReadCalibrated &rArr; QTRSensorsRead &rArr; QTRPins_OUTPUT_Mode &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
@@ -1760,7 +1755,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunPath
 </UL>
 
-<P><STRONG><a name="[e8]"></a>TurnRight</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, main.o(i.TurnRight))
+<P><STRONG><a name="[e8]"></a>TurnRight</STRONG> (Thumb, 144 bytes, Stack size 8 bytes, main.o(i.TurnRight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = TurnRight &rArr; QTRSensorsReadCalibrated &rArr; QTRSensorsRead &rArr; QTRPins_OUTPUT_Mode &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
@@ -1794,14 +1789,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_DAC_IRQHandler
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Speed
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Path
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Line
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Speed
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Path
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Line
+<BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Speed
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Path
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_NAK_Line
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Speed
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Path
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_ACK_Line
 </UL>
 
 <P><STRONG><a name="[115]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
@@ -1835,10 +1829,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_fpclassify
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
-<P><STRONG><a name="[cb]"></a>__hardfp_exp</STRONG> (Thumb, 714 bytes, Stack size 72 bytes, exp.o(i.__hardfp_exp))
+<P><STRONG><a name="[ca]"></a>__hardfp_exp</STRONG> (Thumb, 714 bytes, Stack size 72 bytes, exp.o(i.__hardfp_exp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = __hardfp_exp &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
@@ -1854,27 +1848,27 @@ Global Symbols
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
 </UL>
 
 <P><STRONG><a name="[120]"></a>__kernel_poly</STRONG> (Thumb, 248 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __kernel_poly &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[11b]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __mathlib_dbl_infnan &rArr; __aeabi_dadd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[11d]"></a>__mathlib_dbl_overflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_overflow))
@@ -1882,7 +1876,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[11f]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -1890,7 +1884,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[7f]"></a>_is_digit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, __printf_wp.o(i._is_digit))
@@ -1903,9 +1897,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnRight
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TurnLeft
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reverse
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pick
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drop
@@ -1917,10 +1912,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read
 </UL>
 
 <P><STRONG><a name="[cd]"></a>i2c_init</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, i2c.o(i.i2c_init))
@@ -1930,10 +1925,10 @@ Global Symbols
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_I2C_Init
+<BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_I2C_Init
 </UL>
 
-<P><STRONG><a name="[bd]"></a>i2c_read</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, i2c.o(i.i2c_read))
+<P><STRONG><a name="[bb]"></a>i2c_read</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, i2c.o(i.i2c_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = i2c_read &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1941,32 +1936,32 @@ Global Symbols
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
 </UL>
 
-<P><STRONG><a name="[ba]"></a>i2c_start</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, i2c.o(i.i2c_start))
+<P><STRONG><a name="[b8]"></a>i2c_start</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, i2c.o(i.i2c_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = i2c_start &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
 </UL>
 
-<P><STRONG><a name="[bc]"></a>i2c_stop</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, i2c.o(i.i2c_stop))
+<P><STRONG><a name="[ba]"></a>i2c_stop</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, i2c.o(i.i2c_stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = i2c_stop &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
 </UL>
 
-<P><STRONG><a name="[bb]"></a>i2c_write</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, i2c.o(i.i2c_write))
+<P><STRONG><a name="[b9]"></a>i2c_write</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, i2c.o(i.i2c_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = i2c_write &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1974,29 +1969,29 @@ Global Symbols
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
 </UL>
 
-<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 432 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 410 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 180 + Unknown Stack Size
 <LI>Call Chain = main &rArr; UART_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Init
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_Check
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_INT_Init
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_INT_Init
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_INT_Init
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QTRSensorsReadCalibrated
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Init
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Puts
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_NewLine
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BackLight
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Puts
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_NewLine
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BackLight
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BKPSRAM_Init
@@ -2014,15 +2009,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_numeric_2
 </UL>
 
-<P><STRONG><a name="[b4]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
+<P><STRONG><a name="[b2]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Velocity
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Right
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
 </UL>
 
@@ -2031,7 +2026,7 @@ Global Symbols
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[b3]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
+<P><STRONG><a name="[cc]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Velocity
@@ -2039,11 +2034,10 @@ Global Symbols
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[12a]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
@@ -2062,9 +2056,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Right
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[12d]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
@@ -2076,7 +2071,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[12e]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
@@ -2085,9 +2080,9 @@ Global Symbols
 
 <P><STRONG><a name="[af]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
 <BR><BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[169]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
@@ -2095,12 +2090,12 @@ Global Symbols
 <P><STRONG><a name="[11e]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_cdcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[12f]"></a>_dcmple</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<BR><BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
 </UL>
 
 <P><STRONG><a name="[133]"></a>__fpl_dcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, dleqf.o(x$fpl$dleqf), UNUSED)
@@ -2114,13 +2109,13 @@ Global Symbols
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Right
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Velocity
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[131]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -2148,18 +2143,18 @@ Global Symbols
 <P><STRONG><a name="[11c]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cdrcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[132]"></a>_drcmple</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmple_InfNaN
 </UL>
 
-<P><STRONG><a name="[cc]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
+<P><STRONG><a name="[cb]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_drsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[134]"></a>_drsb</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb), UNUSED)
@@ -2171,7 +2166,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_exp
 </UL>
 
 <P><STRONG><a name="[136]"></a>_dsub</STRONG> (Thumb, 464 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
@@ -2179,7 +2174,7 @@ Global Symbols
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
 </UL>
 
-<P><STRONG><a name="[b2]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
+<P><STRONG><a name="[c9]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Velocity
@@ -2187,8 +2182,7 @@ Global Symbols
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Turn_Left
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Line
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_GA25_Lifting
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_Position
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowpassFilter
 </UL>
 
 <P><STRONG><a name="[137]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
@@ -2230,8 +2224,8 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[108]"></a>TM_SPI_Send</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, tm_stm32f4_mfrc522.o(i.TM_SPI_Send))
-<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
+<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_WriteRegister
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MFRC522_ReadRegister
 </UL>
 
 <P><STRONG><a name="[110]"></a>TM_SPIx_Init</STRONG> (Thumb, 334 bytes, Stack size 48 bytes, tm_stm32f4_spi.o(i.TM_SPIx_Init))
@@ -2249,39 +2243,39 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_SPI_Init
 </UL>
 
-<P><STRONG><a name="[c0]"></a>LCD_FlushVal</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_FlushVal))
+<P><STRONG><a name="[be]"></a>LCD_FlushVal</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_FlushVal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BackLight
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BackLight
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 
-<P><STRONG><a name="[c2]"></a>LCD_WriteCmd</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_WriteCmd))
+<P><STRONG><a name="[c0]"></a>LCD_WriteCmd</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_WriteCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = LCD_WriteCmd &rArr; LCD_WaitBusy &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WaitBusy
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_4bit
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_NewLine
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_NewLine
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
 </UL>
 
-<P><STRONG><a name="[c5]"></a>LCD_Write_4bit</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Write_4bit))
+<P><STRONG><a name="[c3]"></a>LCD_Write_4bit</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, lcd_2004.o(i.LCD_Write_4bit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = LCD_Write_4bit &rArr; LCD_FlushVal &rArr; I2C_Write &rArr; i2c_write &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_FlushVal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write_Chr
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 
 <P><STRONG><a name="[135]"></a>_dadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
@@ -2297,11 +2291,11 @@ Local Symbols
 <P><STRONG><a name="[84]"></a>_fp_digits</STRONG> (Thumb, 432 bytes, Stack size 96 bytes, _printf_fp_dec.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220<LI>Call Chain = _fp_digits &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_emul
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_ediv
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_d2e
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_d2e
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ll_udiv10
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_emul
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_ediv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
 </UL>

@@ -21,13 +21,36 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
 Dialog DLL:      TCM.DLL V1.36.5.0
  
 <h2>Project:</h2>
-D:\AGVThesisProject\AVG Program.uvprojx
+D:\University\LUAN VAN TOT NGHIEP\LVTN\14thang5\AGVThesisProject\AVG Program.uvprojx
 Project File Date:  04/17/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'AGV Test'
-".\Objects\AVG Program.axf" - 0 Error(s), 0 Warning(s).
+compiling PID.c...
+STM32F4xx_Mylib\src\PID.c(91): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  													+ setki_lift*PID_para_lift.Ts_*(PID_para_lift.ek + PID_para_lift.ek_1)*0.5
+STM32F4xx_Mylib\src\PID.c(102): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	Run_Motor(LIFT_MOTOR,PID_para_lift.uk/1.5);
+STM32F4xx_Mylib\src\PID.c(118): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	                   + setki_speed*PID_para_vel.Ts_*(PID_para_vel.ek + PID_para_vel.ek_1)*0.5 
+STM32F4xx_Mylib\src\PID.c(177): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	                   + 2*PID_para_Turn_Right.Ts_*(PID_para_Turn_Right.ek + PID_para_Turn_Right.ek_1)*0.5 
+STM32F4xx_Mylib\src\PID.c(178): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	                   + 0.015*(PID_para_Turn_Right.ek-2*PID_para_Turn_Right.ek_1+PID_para_Turn_Right.ek_2)/PID_para_Turn_Right.Ts_;
+STM32F4xx_Mylib\src\PID.c(208): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	                   + 2*PID_para_Turn_Left.Ts_*(PID_para_Turn_Left.ek + PID_para_Turn_Left.ek_1)*0.5 
+STM32F4xx_Mylib\src\PID.c(209): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	                   + 0.015*(PID_para_Turn_Left.ek-2*PID_para_Turn_Left.ek_1+PID_para_Turn_Left.ek_2)/PID_para_Turn_Left.Ts_;
+STM32F4xx_Mylib\src\PID.c: 7 warnings, 0 errors
+compiling main.c...
+main.c(485): warning:  #940-D: missing return statement at end of non-void function "GetNode" 
+  }
+main.c: 1 warning, 0 errors
+linking...
+Program Size: Code=25022 RO-data=706 RW-data=860 ZI-data=2020  
+FromELF: creating hex file...
+".\Objects\AVG Program.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +73,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

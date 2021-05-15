@@ -11,7 +11,6 @@ uint8_t Fs = 100;
 // Left Motor Channels
 
 
-
 void ENC_Init(void)
 	{
 	
@@ -99,13 +98,13 @@ float ENC_Velocity(TIM_TypeDef* TIMx,uint16_t N)
 	return vel;
 }
 
-float ENC_Position(TIM_TypeDef* TIMx,uint16_t N,float current_pos)
+float ENC_Position(TIM_TypeDef* TIMx,uint16_t N)
 {
 
 	int16_t xung_ENC ;
-	
+	float current_pos;
 	xung_ENC = TIM_GetCounter(TIMx);
-	current_pos += (xung_ENC-30000)*8.5*3.14/(N*4);    
+	current_pos = (xung_ENC-30000)*8.5*3.14/(N*4);    
 	TIM_SetCounter(TIMx,30000) ;
 	return current_pos;
 }

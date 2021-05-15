@@ -5,10 +5,11 @@
 #define   Rx_BUFF_SIZE    1
 void init_main(void);
 
+extern uint8_t statusCompletePath;
 uint8_t 	rxbuff[Rx_BUFF_SIZE], data_receive[26];
 uint8_t PathByteCount_Run = 0; 
-uint8_t pathRunReceive[30];
-
+uint8_t pathRunReceive[40];
+extern uint8_t unSendInformation;
 char txbuff[Tx_BUFF_SIZE];	
 float kp,ki,kd;
 uint8_t rxdata=0, pre_rxdata;
@@ -16,13 +17,13 @@ uint8_t rxdata=0, pre_rxdata;
 int b = 0;
 int on = 0;
 int v_sv = 0;
-float setVelocity; 
+float setVelocity = 0; 
 float setki=0;
 int16_t crc_cal=0, crc_receive =0;
 
 uint8_t crc1=0,crc2=0;
-float setkp_line =0, setki_line =0, setkd_line =0;
-float setkp_speed =0, setki_speed =0, setkd_speed =0;
+float setkp_line =0.5, setki_line =0.0005, setkd_line =0.05;
+float setkp_speed =2, setki_speed =2, setkd_speed =0.015;
 float setkp_lift = 0.7, setki_lift = 2, setkd_lift = 0.0015;
 int flag_receiver =0, i=0;
 uint8_t flagPathReceived = 0;
@@ -273,7 +274,29 @@ void DMA1_Stream5_IRQHandler(void)
 		     crc_cal = CRC_Cal(data_receive,i-4);
 		     memcpy(&crc_receive,&data_receive[i-4], 2);
 		   
-			if(data_receive[0] == 0xAC && data_receive[1] == 0x01 )
+		
+		  if(data_receive[0] == 0xA1 && data_receive[1] == 0x01)
+			{     
+				  if(crc_cal != crc_receive)
+						 Send_NAK_Path();
+				  else
+					{
+			       memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
+				     for(int i = 0; i < PathByteCount_Run; i++)                    // 
+			       {
+				         memcpy(&pathRunReceive[i], &data_receive[3 + i], 1);	// Luu gia tri Path vao array pathRunReceive					
+				     }
+						 
+					   
+						 if(setVelocity == 0)
+						    setVelocity = 15;
+						 Send_ACK_Path();
+						 flagPathReceived = 1;
+						 statusCompletePath = 0;
+				  }
+			}
+		
+			else if(data_receive[0] == 0xAC && data_receive[1] == 0x01 )
 			{
 				  if(crc_cal != crc_receive)
 						  Send_NAK_Speed();
@@ -288,7 +311,7 @@ void DMA1_Stream5_IRQHandler(void)
 			  	
 			}
 		
-			else if(data_receive[0] == 0xAD && data_receive[1] == 0x01 )
+		 else if(data_receive[0] == 0xAD && data_receive[1] == 0x01 )
 			{
 				  if(crc_cal != crc_receive)
 						  Send_NAK_Line();
@@ -301,22 +324,7 @@ void DMA1_Stream5_IRQHandler(void)
 				     Send_ACK_Line();
 					}
 			}
-      else if(data_receive[0] == 0xA1 && data_receive[1] == 0x01)
-			{     
-				  if(crc_cal != crc_receive)
-						 Send_NAK_Path();
-					else
-					{
-			       memcpy(&PathByteCount_Run, &data_receive[2], 1);      				// Lay gia tri count cua Path
-				     for(int i = 0; i < PathByteCount_Run; i++)                    // 
-			       {
-				         memcpy(&pathRunReceive[i], &data_receive[3 + i], 1);	// Luu gia tri Path vao array pathRunReceive					
-				     }
-					   flagPathReceived = 1;
-						 flagCompleteTask = 0;
-					   Send_ACK_Path();
-				  }
-			}
+    
 			
 		flag_receiver = 0;
 		i =0;

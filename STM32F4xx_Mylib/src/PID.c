@@ -99,7 +99,7 @@ void PID_GA25_Lifting(float x_ref, float x_measure) // v_sv RPM
 	if (PID_para_lift.uk >= 100) PID_para_lift.uk =100;
 	else if (PID_para_lift.uk <= -100) PID_para_lift.uk = -100;
 		
-	Run_Motor(LIFT_MOTOR,PID_para_lift.uk/2);
+	Run_Motor(LIFT_MOTOR,PID_para_lift.uk/1.5);
  	 
 }
 
@@ -151,11 +151,9 @@ void PID_Line(float x_measure,float udk)
 	
    	 if (out_line > udk) out_line  = udk;
   	 else if (out_line  < -udk) out_line  = -udk;
-	
-	   //int rightMotorSpeed = udk + 2 + out_line/1.6;              
-	 //  int leftMotorSpeed = udk - out_line/1.6;     
- int rightMotorSpeed = udk + 2 + out_line/1.5;              
-	   int leftMotorSpeed = udk - out_line/1.5;  		
+	   
+     int rightMotorSpeed = udk + 2 + out_line/1.6;       //1.5       
+	   int leftMotorSpeed = udk - out_line/1.6;  		
 	
 	   Run_Motor(LEFT_MOTOR,leftMotorSpeed);
 	   Run_Motor(RIGHT_MOTOR,rightMotorSpeed);
@@ -186,9 +184,9 @@ void PID_Turn_Right(float x_ref, float x_measure) // v_sv RPM
 	
 	   if (PID_para_Turn_Right.uk >= 100) PID_para_Turn_Right.uk =100;
 	   else if (PID_para_Turn_Right.uk <= -100) PID_para_Turn_Right.uk = -100;
-
+     Run_Motor(RIGHT_MOTOR, 0);
 	   Run_Motor(LEFT_MOTOR, PID_para_Turn_Right.uk);
-		 Run_Motor(RIGHT_MOTOR, 0);
+
 
   }
 }
@@ -217,10 +215,8 @@ void PID_Turn_Left(float x_ref, float x_measure) // v_sv RPM
 	
 	   if (PID_para_Turn_Left.uk >= 100) PID_para_Turn_Left.uk =100;
 	   else if (PID_para_Turn_Left.uk <= -100) PID_para_Turn_Left.uk = -100;
-
-	   Run_Motor(RIGHT_MOTOR, PID_para_Turn_Left.uk);
 		 Run_Motor(LEFT_MOTOR, 0);
-
+	   Run_Motor(RIGHT_MOTOR, PID_para_Turn_Left.uk);
   }
 }
 

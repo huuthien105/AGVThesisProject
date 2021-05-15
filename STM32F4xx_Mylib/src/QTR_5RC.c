@@ -153,4 +153,5 @@ uint16_t QTRSensorsReadCalibrated(uint16_t *_sensorValues)
 	}
 		
 	return (_sensorValues[0] * 0 + _sensorValues[1] * 0 + _sensorValues[2] * 1000 + _sensorValues[3] * 2000 + _sensorValues[4] * 2000)/(_sensorValues[1] + _sensorValues[2] + _sensorValues[3] + _sensorValues[4]+ _sensorValues[0]);
+	//	return (_sensorValues[0] * 2000 + _sensorValues[1] * 2000 + _sensorValues[2] * 1000 + _sensorValues[3] * 0 + _sensorValues[4] * 0)/(_sensorValues[1] + _sensorValues[2] + _sensorValues[3] + _sensorValues[4]+ _sensorValues[0]);
 }
